@@ -1,0 +1,85 @@
+SAMS Copying and Distribution
+================================
+
+SAMS is Open Source software with copyright primarily held by the
+New BSD Licence.  The source code is controlled and maintained by a
+core team of Open Source developers current students of the University of Buea.
+Those core developers operate under a meritocracy organizational structure
+adhering to developer guidelines outlined in the HACKING developer's
+guide and to the legal conventions and requirements outlined in this
+document.
+
+As a unified work, SAMS is made available under the terms of the
+BSD New Licence also known as BSD-3 Licence as published by the BSD Software Foundation.
+
+As distinctly organized and separate components, parts of BRL-CAD are
+made available under different licenses for different portions
+including the BSD license and files in the public domain. The Overview
+section describes how the various licenses apply to the different
+portions of BRL-CAD.
+
+SAMS is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+FITNESS FOR A PARTICULAR PURPOSE.  See the BSD-3 licence for more details.
+
+Copyright (c) 2015, SAMS
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+* Redistributions of source code must retain the above copyright notice, this
+  list of conditions and the following disclaimer.
+
+* Redistributions in binary form must reproduce the above copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+
+* Neither the name of [project] nor the names of its
+  contributors may be used to endorse or promote products derived from
+  this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE
+
+Overview
+--------
+
+
+
+Copyright
+---------
+
+All contributions to SAMS have been provided under agreement.  By
+requiring all contributions be given back to the SAMS developers,
+this agreement allows the SAMS project to continue to grow
+unhindered.  As such, all of the source code is copyright by
+the BSD-3 Software Licence stated above.
+
+Authors and other SAMS contributors must comply with the copyright
+terms for their respective contributions unless otherwise noted or
+arranged.  This includes an implicit assignment of copyright for any
+and all contributions being made.  The following notice should be
+prominent in the BRL-CAD sources:
+
+  Copyright (c) 2015 SAMS 
+
+Contact
+-------
+
+Questions or comments regarding SAMS legal issues pertaining to
+copying, linking, licensing, trademark, or otherwise should be
+directed to the BRL-CAD Development Team at the following address:
+
+SAMS Development Team
+check.nyah@gmail.com
+
+---
