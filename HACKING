@@ -58,11 +58,10 @@ TABLE OF CONTENTS
 GETTING STARTED
 ---------------
 
-As there are many ways to get started with BRL-CAD, one of the most
+As there are many ways to get started with SAMS, one of the most
 important steps for new contributors to do is get involved in the
-discussions and communicate with the BRL-CAD developers.  There are
-mailing lists, on-line forums, and an IRC channel dedicated to BRL-CAD
-development and project communication.  All contributors are
+discussions and communicate with the SAMS developers.  This is currently 
+possible by email any of the project admins. All contributors are
 encouraged to participate in any of the available communication
 channels:
 
@@ -70,25 +69,15 @@ channels:
 
   The primary and generally preferred mechanism for interactive
   developer discussions is via Internet Relay Chat (IRC).  Several of
-  the core developers and core contributors of BRL-CAD hang out in
-  #brlcad on the Freenode network.  With most any IRC client, you
-  should be able to join #brlcad on irc.freenode.net, port 6667.  See
+  the core developers and core contributors of SAMS hang out in
+  #ublab on the Freenode network.  With most any IRC client, you
+  should be able to join #ublab on irc.freenode.net.  See
   http://freenode.net and http://irchelp.org for more information
 
 * E-mail Mailing Lists
 
-  There are several mailing lists available for interaction, e.g. the
-  http://sourceforge.net/mail/?group_id=105292 "brlcad-devel" mailing
-  list.  More involved contributors may also be interested in joining
-  the "brlcad-commits" and "brlcad-tracker" mailing lists.
 
 * On-line Forums
-
-  Discussion forums are available on the project site at
-  http://sourceforge.net/forum/?group_id=105292 for both developers
-  and users.  Of particular interest to developers is, of course, the
-  "Developers" forum where all contributors are encouraged to
-  participate.
 
 
 HOW TO CONTRIBUTE
@@ -102,30 +91,6 @@ basically a function of their past and present contributions to the
 project.  Those who constructively contribute, frequently interact,
 and remain highly involved have more say than those who do not.
 
-As BRL-CAD is comprised of a rather large code base with extensive
-existing documentation and web resources, there are many many places
-where one may begin to get involved with the project.  More than
-likely, there is some new goal you already have in mind, be it a new
-geometry converter, support for a different image type, a fix to some
-bug, an update to existing documentation, a new web page, or something
-else entirely.  Regardless of the goal or contribution, it is highly
-encouraged that you interact with the existing developers and discuss
-your intentions.  This is particularly important if you would like to
-see your modification added to BRL-CAD and you do not yet have
-contributor access.  When in doubt, working on resolving existing
-bugs, improving performance, documentation, and writing tests are
-perfect places to begin.
-
-For many, it can be overwhelming at just how much there is.  To a
-certain extent, you will need to familiarize yourself with the basic
-existing infrastructure before significantly changing or adding a
-completely new feature.  There is documentation available in the
-source distribution's doc/ directory, throughout the source hierarchy
-in manpages, on the website, and potentially in the documentation
-tracker at http://sourceforge.net/docman/?group_id=105292 covering a
-wide variety of topics.  Consult the existing documentation, sources,
-and developers to become more familiar with what already exists.
-
 See the PATCH SUBMISSION GUIDELINES section below for details on
 preparing and providing contributions.
 
@@ -136,11 +101,11 @@ REFACTORING
 proportion -> integrity -> clarity
 
 Refactoring is one of the most useful activities a contributor can
-make to BRL-CAD.  Code refactoring involves reviewing and rewriting
+make to SAMS.  Code refactoring involves reviewing and rewriting
 source code to be more maintainable through reduced complexity and
 improved readability, structure, and extensibility.
 
-For each source file in BRL-CAD, the following checklist applies:
+For each source file in SAMS, the following checklist applies:
 
 * Consistent indentation.  See CODING STYLE & STANDARDS below.
   Indents every 4 characters, tab stops at 8 characters with BSD KNF
@@ -210,32 +175,9 @@ and on-going development.
 SOURCE CODE LANGUAGES
 ---------------------
 
-The vast majority of BRL-CAD is written in ANSI C with the intent to
-be strictly conformant to the C standard.  A majority of the MGED
-geometry editor is written in a combination of C, Tcl/Tk, and Incr
-Tcl/Tk.  The BRL-CAD Benchmark, build system, and utility scripts are
-written in what should be POSIX-compliant Bourne Shell Script.  An
-initial implementation of a BRL-CAD Geometry Server is written in PHP.
-
-With release 7.0, BRL-CAD has moved forward and worked toward making
-all of BRL-CAD C code conform strictly with the ANSI/ISO standard for
-C language compilation (ISO/IEC 9899:1990, i.e. c89).  Support for
-older compilers and older K&R-based system facilities is being
-migrated to build system declarations, preprocessor defines, or being
-removed outright.  It's okay to make modifications that assume
-compiler conformance with the ANSI C standard (c89).
-
-There is currently no C++ interface to the core BRL-CAD libraries.
-There are a few tools and enhancements to libraries that are
-implemented in C++ (the new BREP object type in librt, for example),
-but there are presently no C++ bindings available beyond experimental
-developments.  While C++ as an implementation language of new tools
-and new library interfaces is not prohibited, the mixing of C++
-semantics and C++ code (including simple // style comments) in the
-existing C files is not allowed.  As new interfaces are developed, new
-contributors become involved, and C++ code integration becomes more
-prevalent, the contributor guidelines will become reinforced with more
-details.
+The vast majority of SAMS is written in Java SE 7 with the intent to
+be strictly conformant to the Java standard.  A portion of the code 
+deals with the GUI will be implemented in JavaFX.
 
 
 CODING STYLE & STANDARDS
@@ -255,11 +197,7 @@ Code that is potentially useful to another application, or that may be
 abstracted in such a way that it is useful to other applications,
 should be put in a library and not in application directories.
 
-C files use the .c extension.  Header files use the .h extension.  C++
-files use the .cpp extension.  PHP files use the .php extension.
-Tcl/Tk files use the .tcl/.tk extensions.  POSIX Bourne-style shell
-scripts use the .sh extension.  Perl files use the .pl (program) or
-.pm (module) extensions.
+Java files use the .java extension.
 
 Source files go into the src/ directory on the top level, into a
 corresponding directory for the category of binary or library that it
@@ -267,69 +205,18 @@ belongs to.  Documentation files go into the doc/ directory on the top
 level, with the exception of manual (man) pages that should be
 colocated with any corresponding source files.
 
-Header files private to a library go into that library's directory.
-Public header files go into the include/ directory on the top level.
-Public header files should not include any headers that are private.
-Headers should include any other headers that they require for correct
-parsing (this is an on-going clean-up effort).  Public header files
-should not include the common header.
-
-Headers should be included in a particular order.  That order is
-generally as follows:
-
-  - any single "interface" header [optional]
-  - the common header (unless the interface header includes it)
-  - system headers
-  - public headers
-  - private headers
-
-Applications may optionally provide an interface header that defines
-common structures applicable to most or all files being compiled for
-that application.  That interface header will generally be the first
-file to be included, as it usually includes the common header and
-system headers.  The common header should always be included before
-any system header.  Standard C system headers should be included
-before library system headers.  Headers should be written to be
-self-contained, not requiring other headers to be necessarily included
-before they may be used.  If another header is necessary for a header
-to function correctly, it should include it.
+ should include it.
 
 Build System:
 
-The CMake build system (more specifically, compilation test macros
-defined in misc/CMake/BRLCAD_CheckFunctions.cmake) should be used
-extensively to test for availability of system services such as
-standard header files, available libraries, and data types.  No
-assumptions should be made regarding the availability of any
-particular header, function, datatype, or other resource.  After
-running cmake, there will be an autogenerated include/brlcad_config.h
-file that contains many preprocessor directives and type declarations
-that may be used where needed.
-
-Generic platform checks (e.g. #ifdef unix, #ifdef _WIN32) are highly
-discouraged and should generally not be used.  Replace system checks
-with tests for the actual facility being utilized instead.
-
-The Windows platform utilizes its own manually-generated configure
-results header (include/config_win.h) that has to be manually updated
-if new tests are added to the CMake build logic.
-
-Only the BRL-CAD sources should include and utilize the common.h
-header.  They should not include brlcad_config.h or config_win.h
-directly.  If used, the common.h header should be listed before any
-system headers.
 
 Language Compliance:
 
-Features of C that conform to the ISO/IEC 9899-1990 C standard (C90)
-are generally the baseline for strict language conformance.  As
-BRL-CAD used to be K&R syntax conformant, there remains an on-going
-effort to ensure a full conversion to a standards compliant ISO C
-implementation.
+.
 
 Code Conventions:
 
-Globals variables, structures, classes, and other public data
+Global variables,  classes, and other public data
 containers are highly discouraged within application code.  Do not add
 any new globals to existing libraries.  Globals are often a quick
 solution to some deeper coding problem.  However, they carry
@@ -345,80 +232,21 @@ Functions should always specify a return type, including functions
 that return int or void.  ANSI C prototypes should be used to declare
 functions, not K&R function prototypes.
 
-Exact floating point comparisons are unreliable without requiring
-IEEE-compliant floating point math, but BRL-CAD does not require such
-math for portability and performance reasons.  When floating point
-comparisons are necessary, use the NEAR_EQUAL and NEAR_ZERO macros
-with a specified tolerance or the EQUAL and ZERO macros where a
-tolerance is indeterminate (all the macros are available by including
-bn.h, part of libbn).  Examples:
-
-  For known tolerances:
-
-  * instead of "foo == 2.0" use "NEAR_EQUAL(foo, 2.0, tol)"
-  * instead of "foo != 0.0" use "foo !NEAR_ZERO(foo, tol)"
-
-  For indeterminate tolerances:
-
-  * instead of "foo == 2.0" use "EQUAL(foo, 2.0)"
-  * instead of "foo != 0.0" use "foo !ZERO(foo)"
-
-There are several functions whose functionality are either wrapped or
-implemented in a cross-platform manner by libbu.  This includes
-functions related to memory allocation, command option parsing,
-logging routines, and more.  The following functions and global
-variables should be utilized instead of the standard C facility:
-
-  bu_malloc() instead of malloc()
-  bu_calloc() instead of calloc()
-  bu_realloc() instead of realloc()
-  bu_fgets() instead of fgets()
-  bu_free() instead of free()
-  bu_log() instead of printf()
-  bu_bomb() instead of abort()
-  bu_exit() instead of printf()+exit()
-  bu_dirname() instead of dirname()
-  bu_getopt() instead of getopt()
-  bu_opterr instead of opterr
-  bu_optind instead of optind
-  bu_optopt instead of optopt
-  bu_optarg instead of optarg
-  bu_strlcat() instead of strcat(), strncat(), and strlcat()
-  bu_strlcpy() instead of strcpy(), strncpy(), and strlcpy()
-  bu_strcmp() and BU_STR_EQUAL() instead of strcmp()
-  bu_strcasecmp() and BU_STR_EQUIV() instead of stricmp()/strcasecmp()
-  bu_strncmp() instead of strncmp()
-  bu_strcasecmp() instead of strnicmp()/strncasecmp()
-  bu_file_delete() instead of unlink(), rmdir(), and remove()
-  bu_sort() instead of qsort()
-
-Similarly, ANSI C functions are preferred over the BSD and POSIX
-interfaces.  The following functions should be used:
-
-  memset() instead of bzero()
-  memcpy() instead of bcopy()
-
-The code should strive to achieve conformance with the GNU coding
-standard with a few exceptions.  One such exception is NOT utilizing
-the GNU indentation style, but instead utilizing the BSD KNF
-indentation style which is basically the K&R indentation style with 4
-character indents.  The following examples should be strictly adhered
-to, if only for the sake of being consistent.
+E
 
 1) Indentation whitespace
 
 Indents are 4 characters, tabs are 8 characters.  There should be an
 emacs and vi local variables block setting at the end of each file to
 adopt, enforce, and otherwise remind one of this convention.  The
-following lines should be in all C and C++ source and header files at
+following lines should be in all java source files at
 the end of the file:
 
 /*
  * Local Variables:
- * mode: C
+ * mode: java
  * tab-width: 8
  * indent-tabs-mode: t
- * c-file-style: "stroustrup"
  * End:
  * ex: shiftwidth=4 tabstop=8
  */
@@ -439,18 +267,17 @@ footer script in sh/footer.sh to automatically set/update files.
 Here is an example where '.' represents a literal space character
 (0x20) and '[ ]' represents a literal tab character (0x09):
 
-int
-main(int ac, char *av[])
-{
+
+public static void main(String[] args) {
 ....int i;
 ....int foo = 0;
 
 ....for (i = 0 ; i < 10; i++) {
 [      ]foo += 1;
 [      ]if (foo % 2) {
-[      ]....printf("hello\n");
+[      ]....System.out.printf("hello\n");
 [      ]....if (foo > 5) {
-[      ][      ]printf("world\n");
+[      ][      ]System.out.printf("world\n");
 [      ]....}
 [      ]}
 ....}
@@ -503,13 +330,13 @@ Comments should have an interior space and be without tabs.
 
 3) Braces
 
-BRL-CAD uses the "The One True Brace Style" from BSD KNF and K&R.
+SAMS uses the "The One True Brace Style" from BSD KNF and K&R.
 Opening braces should be on the same line as their statement, closing
 braces should line up with that same statement.  Functions, however,
 are treated specially and we place their opening braces on separate
 lines.  See http://en.wikipedia.org/wiki/Indent_style for details.
 
-  int
+  public static int
   some_function(char *j)
   {
       for (i = 0; i < 100; i++) {
@@ -534,40 +361,16 @@ use Hungarian notation or variations thereof) with a slight exception
 for pointers on occasion.  The name should use a concise, meaningful
 name that is not cryptic (typing a descriptive name is preferred over
 someone else hunting down what was meant).
-  char *name;    /* ok  */
-  char *pName;   /* discouraged for new code, but okay */
-  char *fooPtr;  /* bad */
-  char *lpszFoo; /* bad */
+  char letter;    /* ok  */
+  char pName;   /* discouraged for new code, but okay */
+  char fooPtr;  /* bad */
+  char lpszFoo; /* bad */
 
 Constants should be all upper-case with word boundaries optionally
 separated by underscores.
-  static const int MAX_READ = 2;  /* ok  */
-  static const int arraySize = 8; /* bad */
+  public static final int MAX_READ = 2;  /* ok  */
+  public static final int arraySize = 8; /* bad */
 
-Public API (global) function names are in lowercase with underscores
-to separate words.  Most functions within the core libraries are named
-with the following convention: [library]_[group]_[action]
-  bu_vls_strcat()
-  bn_mat_transpose()
-
-Naming exceptions are allowed where the API intentionally mirrors some
-other familiar programming construct (e.g., bu_malloc()+bu_free()),
-but care should otherwise be taken to be as consistent as possible
-within a file and across a library's API.
-
-Here are some naming convention pairings commonly used:
-
-  Allocation   => alloc()
-  Deallocation => free()
-
-  Initialization      => init()
-  De/Reinitialization => clear()
-
-  Allocation + Init      => create()   (new for C++)
-  Deinitialize + Dealloc => destroy()  (delete for C++)
-
-  Resource acquire => open()
-  Resource release => close()
 
 5) Debugging
 
@@ -581,10 +384,10 @@ structures.
 
 6) Comments
 
-"//" style comments are not allowed in C source files for portability.
+"//" style comments are allowed in java source files for portability.
 Comment blocks should utilize an asterisk at the beginning of each new
 line.  Doxygen comments should start on the second line unless it's a
-succinct /** single-line */ comment.
+succinct // single-line  comment.
 
 /* This is a
  * comment block.
@@ -608,17 +411,6 @@ number of function arguments is usually better.
 DOCUMENTATION
 -------------
 
-BRL-CAD has extensive documentation in various formats and presently
-maintained in various locations.  It is an on-going desire and goal of
-the project to have all documentation located along with the source
-code in our Subversion (SVN) repository.
-
-In line with that goal and where beneficial, a large portion of the
-tutorial documentation is being converted to the DocBook XML format.
-Having the tutorial documentation in the DocBook XML format allows for
-easier maintenance, better export conversion support, and
-representation in a textual format that may be revision controlled and
-tracked.
 
 Documenting Source Code:
 
@@ -640,8 +432,8 @@ precedes your functions:
  * Computes the answer to the meaning of life, the universe, and
  * everything.
  */
-int
-the_answer(void)
+public static int
+the_answer()
 {
     return 42;
 }
@@ -650,106 +442,11 @@ the_answer(void)
 TESTING & DEBUGGING
 -------------------
 
-BRL-CAD has extensive testing infrastructure in place to ensure tools
-and APIs working a particular manner keep working in an expected way.
-A testing failure usually indicates an unintended change to behavior
-that must be reviewed with the provoking code justified, reverted, or
-(most commonly) fixed.  There are system integration, performance,
-regression, and unit tests accessible through three primary build
-targets.
-
-The BRL-CAD Benchmark, contained in the bench/ directory, validates
-critical raytrace library behavior:
-
-  make benchmark
-
-A series of system integration regression tests, described in a series
-of scripts in the regress/ directory, examines applications:
-
-  make regress
-
-API unit testing is contained within tests/ subdirectories of the
-respective library being tested (e.g., src/libbu/tests):
-
-  make test
-
-Note that changes to publicly documented tools and library APIs must
-adhere to BRL-CAD's change policy.  This means changes to any tests
-may require thoughtful deployment.  See the CHANGES file for details.
-
-To add new regression tests, look at regress/weight.sh for an
-integration test example and src/libbu/tests/bu_vls_vprintf.c for an
-API unit test example.  See their corresponding CMakeLists.txt build
-file for examples of how they are added to the build.  Individual
-regression tests have separate regress-TARGET build targets defined
-(e.g., make regress-weight) to facilitate manual testing.
-
-In addition to benchmark, regression, and unit testing, individual
-programs may be tested after a build without installing by running
-them from the build directory.  Typically, installed binaries will be
-found in the bin/ subdirectory of the top-level build directory, e.g.:
-
-  ./bin/mged
-
-Binaries not intended for installation (i.e., marked NO_INSTALL in the
-CMakeLists.txt file) are in a build path corresponding to the source
-code location, e.g. the unit tests in src/libbu/tests compile into
-binaries in the path/to/builddir/src/libbu/tests build directory.
-
-A profile build, useful for some types of performance inspection
-(e.g., gprof) but not enabled by default, may be specified via:
-
-   cmake .. -DBRLCAD_ENABLE_PROFILING=ON
-
-Debug symbols are enabled by default, even for installation, for all
-libraries and binaries in order to facilitate diagnosing and
-inspecting problems.  Graceful crashes (i.e., an application "bomb")
-may result in a crash log (named appname-#####-bomb.log) getting
-written out on platforms that have the GNU Debugger (gdb) available.
-On most platforms, gdb can also be interactively utilized to inspect a
-reproducible crash (graceful or otherwise):
-
-$ gdb --args bin/mged -c file.g
-...
-gdb> break bu_bomb
-gdb> run
-...[interact with application until it crashes or bombs]
-gdb> backtrace
 
 
 PATCH SUBMISSION GUIDELINES
 ---------------------------
 
-To contribute to BRL-CAD, begin by submitting modifications to the
-patches section at http://sf.net/projects/brlcad/.  Patches in the
-unified diff format (diff -u) are generally preferred when modifying
-existing source or other text files.  Otherwise, contributors are
-welcome to submit their changes in full to the patches tracker as
-compressed file attachments.
-
-All text patches should be submitted in the unified diff format where
-it's feasible to create one either using SVN or using the unmodified
-original file.  This is generally the "-u" option to diff, and is also
-supported by the SVN diff command:
-
-  svn diff > mychanges.patch
-
-Where possible, patch files should be generated against the latest
-sources available to make it easier to review and apply the changes.
-If a modification involves the addition or removal of files, those
-files can be provided separately with instructions on where they
-belong (or what should be removed).  If SVN cannot be used, please
-provide the complete release and build number of the files you worked
-with.
-
-ANY MODIFICATIONS THAT ARE PROVIDED MUST NOT MODIFY OR CONFLICT WITH
-THE EXISTING "COPYING" FILE DISTRIBUTION REQUIREMENTS.  This means
-that most modifications must be LGPL-compatible.  Contributors are
-asked to only provide patches that may legally be incorporated into
-BRL-CAD under the existing distribution provisions described in the
-COPYING file.
-
-Patches that are difficult to apply are difficult to accept.
 
 
 BUGS & UNEXPECTED BEHAVIOR
@@ -757,9 +454,9 @@ BUGS & UNEXPECTED BEHAVIOR
 
 When a bug or unexpected behavior is encountered that cannot be
 quickly fixed, it needs to be documented in our BUGS file or more
-formally reported to the SourceForge bug tracker at:
+formally reported to the github bug tracker at:
 
-http://sourceforge.net/tracker/?atid=640802&group_id=105292&func=browse
+http://
 
 The tracker is the main source for user-reported bugs and/or any
 issues that require significant discussion or benefit from having
@@ -785,9 +482,9 @@ commit access to be granted:
 
 1) Read this file completely.
 
-2) Be able to compile BRL-CAD successfully from an SVN trunk checkout.
+2) Be able to compile SAMS successfully from github fork.
 
-3) Join the brlcad-devel developer mailing list, introduce yourself.
+3) Join the developer mailing list, introduce yourself.
 
 4) Create a SourceForge account, submit at least two patches that
 demonstrate competency with our coding style, apply flawlessly, and
@@ -807,7 +504,7 @@ of thumb is:  don't break anything.
 CONTRIBUTOR RESPONSIBILITIES
 ----------------------------
 
-Contributors of BRL-CAD that are granted commit access are expected to
+Contributors of SAMS that are granted commit access are expected to
 uphold standards of conduct and adhere to conventions and procedures
 outlines in this guide.  All contributors are directly supporting the
 on-going development of BRL-CAD by being granted commit access.  As
@@ -864,79 +561,15 @@ convention.
 VERSION NUMBERS & COMPATIBILITY
 -------------------------------
 
-The BRL-CAD version number is in the include/conf directory in the
-MAJOR, MINOR, and PATCH files.  The README, ChangeLog, and NEWS files
-as well as a variety of documents in the doc/ directory may also make
-references to version numbers.  See the MAKING A RELEASE steps listed
-below for a more concise list of what needs to be updated.
-
-Starting with release 7.0.0, BRL-CAD has adopted a three-digit version
-number convention for identifying and tracking future releases.  This
-number follows a common convention where the three numbers represent:
-
-    {MAJOR_VERSION}.{MINOR_VERSION}.{PATCH_VERSION}
-
-All "development" builds use an odd number for the minor version.  All
-"release" builds use an even number for the minor version.  Patched
-versions should include a release count:
-
-    {MAJOR_VERSION}.{MINOR_VERSION}.{PATCH_VERSION}[-{RELEASE_COUNT}]
-
-The MAJOR_VERSION should only increment when it is deemed that a
-significant amount of major changes have accumulated, new features
-have been added, or enough significant backwards incompatibilities
-were added to make a release warrant a major version increment.  In
-general, releases of BRL-CAD that differ in the MAJOR_VERSION are not
-considered compatible with each other.
-
-The MINOR_VERSION is updated more frequently and serves the dual role
-as previously mentioned of easily identifying a build as a public
-release.  A minor version update is generally issued after significant
-development activity (generally several months of activity) has been
-tested and deemed sufficiently stable.
-
-The PATCH_VERSION may and should be updated as frequently as is
-necessary.  Every public maintenance release should increment the
-patch version.  Every development version modification that is
-backwards incompatible in some manner should increment the patch
-version number.
-
-If it becomes necessary to update a posted release, use and increment
-the RELEASE_COUNT.  The first posted release is implicitly the "-0"
-release count (e.g., 7.10.2 is implicitly 7.10.2-0) with subsequent
-updated releases incrementing the count (e.g., 7.10.2-1).
 
 
 NAMING A SOURCE RELEASE
 -----------------------
 
-In order to achieve some consistency when preparing a source release,
-the following format should be used as the filename convention:
-
-  brlcad-{VERSION}.{EXTENSION}
-
-VERSION is the usual version triplet described above under the section
-entitled VERSION NUMBERS & COMPATIBILITY.  Example: 7.12.4
-
-EXTENSION is the filename extension.  Compressed tar files should use
-the expanded form (i.e. not tgz, etc.) unless otherwise dictated as
-necessary convention by a source package management system.  Examples:
-
-  tar.gz
-  tar.bz2
-  dmg
-  exe
-  zip
 
 
 NAMING A BINARY RELEASE
 -----------------------
-
-In order to achieve some consistency when preparing a binary release,
-the following format should be used as the filename convention:
-
-  SAMS_{VERSION}[_{OS}][_{VENDOR}][_{CPU}][_{NOTE}].{EXTENSION}
-
 
 
 
