@@ -1,35 +1,7 @@
 The Hacker's Guide to SAMS
 =============================
 
-Please read this document if you are contributing to SAMS.
 
-BRL-CAD is a relatively large package with a long history and
-heritage.  Many people have contributed over the years, and there
-continues to be room for involvement and improvement in just about
-every aspect of the package.  As such, contributions to BRL-CAD are
-very welcome and appreciated.
-
-For the sake of code consistency, project coherency, and the long-term
-evolution of BRL-CAD, there are guidelines for getting involved.
-Contributors are strongly encouraged to follow these guidelines and to
-likewise ensure that other contributors similarly follow the
-guidelines.  There are simply too many religious wars over what
-usually come down to personal preferences and familiarity that are
-distractions from making productive progress.
-
-These guidelines apply to all developers, documentation writers,
-testers, porters, graphic designers, web designers, and anyone else
-that is directly contributing to BRL-CAD.  As all contributors are
-also directly assisting in the development of BRL-CAD as a package,
-this guide often simply refers to contributors as developers.
-
-Although BRL-CAD was originally developed and supported primarily by
-the U.S. Army Research Laboratory and its affiliates, it is now a true
-Open Source project with contributions coming in to the project from
-around the world.  The U.S. Army Research Laboratory continues to
-support and contribute to BRL-CAD, but now the project is primarily
-driven by a team of core developers and the BRL-CAD open source
-community.  Contact the BRL-CAD developers for more information.
 
 
 TABLE OF CONTENTS
