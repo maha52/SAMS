@@ -1,0 +1,444 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<Pane focusTraversable="true" minHeight="-Infinity" minWidth="-Infinity" prefHeight="707.0" prefWidth="1362.0" style="-fx-border-color: green; -fx-border-width: 10; -fx-background-color: gray;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sams.FXMLDocumentController">
+   <children>
+      <HBox alignment="CENTER" layoutX="870.0" layoutY="12.0" prefHeight="51.0" prefWidth="454.0" style="-fx-spacing: 20; -fx-background-color: white;">
+         <children>
+            <Button fx:id="homeButton" cancelButton="true" layoutX="870.0" layoutY="12.0" mnemonicParsing="false" onAction="#gotoHome" prefHeight="48.0" prefWidth="65.0" style="-fx-border-color: black; -fx-border-radius: 10;">
+               <graphic>
+                  <ImageView fitHeight="32.0" fitWidth="47.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@images/1_home.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="backButton" layoutX="935.0" layoutY="12.0" mnemonicParsing="false" onAction="#goBack" prefHeight="51.0" prefWidth="65.0" style="-fx-border-color: black; -fx-border-radius: 10;">
+               <graphic>
+                  <ImageView fitHeight="41.0" fitWidth="55.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@images/back.jpg" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="helpbutton" layoutX="1000.0" layoutY="12.0" mnemonicParsing="false" onAction="#showHelp" prefHeight="39.0" prefWidth="57.0" style="-fx-border-color: black; -fx-border-radius: 10;">
+               <graphic>
+                  <ImageView fitHeight="37.0" fitWidth="55.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@images/help.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="adduserButton" layoutX="1067.0" layoutY="12.0" mnemonicParsing="false" onAction="#adduserToSystem" prefHeight="50.0" prefWidth="57.0" style="-fx-border-color: black; -fx-border-radius: 10;">
+               <graphic>
+                  <ImageView fitHeight="40.0" fitWidth="47.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@images/add_user.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="exitButton" cancelButton="true" contentDisplay="CENTER" defaultButton="true" focusTraversable="false" layoutX="1291.0" layoutY="14.0" mnemonicParsing="false" onAction="#leaveSystem" prefHeight="52.0" prefWidth="75.0" style="-fx-border-radius: 10; -fx-border-color: black;" textFill="#da2222">
+               <font>
+                  <Font name="Bitstream Vera Sans Oblique" size="1.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="48.0" fitWidth="72.0">
+                     <image>
+                        <Image url="@images/exit.jpg" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+         </children>
+      </HBox>
+      <Label fx:id="moduleNameLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="17.0" layoutY="18.0" prefHeight="70.0" prefWidth="511.0" style="-fx-background-color: WHITE; -fx-border-radius: 20; -fx-border-width: 10; -fx-border-color: black;" text="STUDENT ATTENDANCE MANAGEMENT SYSTEM" textAlignment="CENTER" textFill="#84c5da">
+         <font>
+            <Font name="Bitstream Vera Sans Bold Oblique" size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="userLogout" alignment="CENTER" cancelButton="true" contentDisplay="CENTER" defaultButton="true" focusTraversable="false" layoutX="899.0" layoutY="81.0" mnemonicParsing="false" onAction="#logoutclicked" prefHeight="15.0" prefWidth="425.0" style="-fx-border-radius: 10; -fx-border-color: black;" text="Guest[logout]" textFill="#629090">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <ImageView fx:id="logo" fitHeight="92.0" fitWidth="276.0" layoutX="541.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/ub_logo.jpg" />
+         </image>
+      </ImageView>
+      <StackPane fx:id="stackPane" focusTraversable="true" layoutX="17.0" layoutY="112.0" prefHeight="582.0" prefWidth="1328.0" style="-fx-border-color: black; -fx-border-width: 10;">
+         <children>
+            <ImageView fx:id="splashImage" fitHeight="541.0" fitWidth="1282.0" focusTraversable="true" layoutX="95.0" layoutY="242.0" pickOnBounds="true" visible="false" StackPane.alignment="CENTER">
+               <image>
+                  <Image url="@images/soft.jpg" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
+            </ImageView>
+            <Label fx:id="welcomebutton" alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" layoutX="69.0" layoutY="127.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="78.0" prefWidth="1263.0" style="-fx-border-radius: 20; -fx-border-color: black;" text="WELCOME TO STUDENT ATTENDANCE MANAGEMENT SYSTEM" textAlignment="CENTER" textFill="#2e7bcd" textOverrun="CENTER_ELLIPSIS" visible="false">
+               <font>
+                  <Font name="Bitstream Vera Sans Bold Oblique" size="36.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="WAIT" />
+               </cursor>
+               
+            </Label>
+            <BorderPane fx:id="beginPane" cache="true" nodeOrientation="RIGHT_TO_LEFT" onMouseClicked="#beginMouseClick" prefHeight="541.0" prefWidth="1308.0" visible="false" StackPane.alignment="BOTTOM_RIGHT">
+               <bottom>
+                  <Button fx:id="beginButton" alignment="CENTER" blendMode="ADD" cache="true" cancelButton="true" contentDisplay="CENTER" defaultButton="true" focusTraversable="false" mnemonicParsing="false" onAction="#beginClicked" prefHeight="75.0" prefWidth="331.0" style="-fx-background-color: white;" text="&lt;&lt;&lt;CLICK HERE&gt;&gt;&gt;" textAlignment="CENTER" textFill="#34aed0" BorderPane.alignment="CENTER">
+                     <font>
+                        <Font name="Bitstream Vera Sans Bold Oblique" size="25.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+               </bottom>
+            </BorderPane>
+            <Pane fx:id="loginPane" prefHeight="563.0" prefWidth="1253.0" style="-fx-background-color: white;" visible="false">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="TOP" nodeOrientation="LEFT_TO_RIGHT" prefHeight="160.0" prefWidth="334.0" style="-fx-background-color: white; -fx-border-radius: 20; -fx-border-color: black; -fx-border-width: 5;" text="PLEASE LOGIN" textFill="#1427a3">
+                     <font>
+                        <Font name="Bitstream Vera Sans Bold Oblique" size="35.0" />
+                     </font>
+                  </Label>
+                  <VBox alignment="CENTER_LEFT" layoutY="103.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="411.0" prefWidth="660.0" style="-fx-spacing: 20; -fx-background-color: beige; -fx-padding: 5; -fx-border-color: black; -fx-border-width: 5;">
+                     <children>
+                        <HBox layoutX="108.0" layoutY="111.0" style="-fx-spacing: 10;">
+                           <children>
+                              <Label layoutX="108.0" layoutY="111.0" prefHeight="56.0" prefWidth="193.0" style="-fx-background-color: white;" text="User name:">
+                                 <font>
+                                    <Font name="Bitstream Vera Serif Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="userNameField" alignment="CENTER" focusTraversable="false" layoutX="374.0" layoutY="114.0" prefHeight="52.0" prefWidth="436.0" promptText="user name">
+                                 <font>
+                                    <Font name="Bitstream Vera Sans Bold Oblique" size="23.0" />
+                                 </font>
+                              </TextField>
+                           </children>
+                        </HBox>
+                        <HBox layoutX="108.0" layoutY="186.0" prefHeight="52.0" prefWidth="637.0" style="-fx-spacing: 10;">
+                           <children>
+                              <Label layoutX="108.0" layoutY="186.0" prefHeight="50.0" prefWidth="195.0" style="-fx-background-color: white;" text="Password :">
+                                 <font>
+                                    <Font name="Bitstream Vera Sans Mono Bold" size="29.0" />
+                                 </font>
+                              </Label>
+                              <PasswordField fx:id="passwordField" alignment="CENTER" cache="true" layoutX="311.0" layoutY="193.0" onAction="#LoginClicked" prefHeight="52.0" prefWidth="434.0" promptText="password">
+                                 <font>
+                                    <Font name="Bitstream Vera Sans Mono Bold" size="27.0" />
+                                 </font>
+                              </PasswordField>
+                           </children>
+                        </HBox>
+                        <HBox layoutX="114.0" layoutY="254.0" prefHeight="45.0" prefWidth="611.0" style="-fx-spacing: 10;">
+                           <children>
+                              <CheckBox fx:id="lecturerCheckBox" alignment="CENTER" cache="true" contentDisplay="CENTER" focusTraversable="false" layoutX="114.0" layoutY="258.0" mnemonicParsing="false" onAction="#lecturerClicked" onMouseEntered="#lecturerMouseEntered" prefHeight="43.0" prefWidth="200.0" style="-fx-background-color: white;" text="I Am A Lecturer" textFill="#2e7c45">
+                                 <font>
+                                    <Font name="Bitstream Vera Sans Mono Bold Oblique" size="18.0" />
+                                 </font>
+                              </CheckBox>
+                              <ComboBox fx:id="courseCombo" cache="true" editable="true" focusTraversable="false" layoutX="333.0" layoutY="254.0" nodeOrientation="LEFT_TO_RIGHT" onAction="#selectCourse" onMouseClicked="#selectCourseClicked" prefHeight="42.0" prefWidth="419.0" promptText="select course">
+                                 <cursor>
+                                    <Cursor fx:constant="CLOSED_HAND" />
+                                 </cursor>
+                              </ComboBox>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="39.0" prefWidth="650.0">
+                           <children>
+                              <Label fx:id="loginFailure" alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" layoutX="82.0" layoutY="358.0" prefHeight="37.0" prefWidth="650.0" text="Login failure!! Please Verify Your User name and password and try again" textFill="#c7102b" visible="false">
+                                 <font>
+                                    <Font name="Bitstream Vera Sans Mono Bold" size="13.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_RIGHT" depthTest="DISABLE" focusTraversable="true">
+                           <children>
+                              <Button fx:id="loginButton" alignment="CENTER" blendMode="SRC_ATOP" cancelButton="true" defaultButton="true" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#LoginClicked" prefHeight="47.0" prefWidth="83.0" text="Login" textFill="#214d7c" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </Pane>
+            <VBox fx:id="choiceMenu" alignment="CENTER" layoutX="421.0" layoutY="201.0" prefHeight="385.0" prefWidth="916.0" style="-fx-spacing: 25; -fx-background-color: white; -fx-border-radius: 30;" visible="false">
+               <children>
+                  <Button fx:id="registrationButton" cancelButton="true" defaultButton="true" lineSpacing="20.0" mnemonicParsing="false" onAction="#registrationButtonclicked" prefHeight="103.0" prefWidth="442.0" text="REGISTRATION" textFill="#1caed7">
+                     <font>
+                        <Font name="Cantarell Bold" size="49.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="attendanceButton" cancelButton="true" defaultButton="true" layoutX="484.0" layoutY="303.0" lineSpacing="20.0" mnemonicParsing="false" onAction="#attendanceButtonClicked" prefHeight="92.0" prefWidth="435.0" text="ATTENDANCE" textFill="#1caed7">
+                     <font>
+                        <Font name="Cantarell Bold" size="25.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="reportsButton" cancelButton="true" defaultButton="true" lineSpacing="20.0" mnemonicParsing="false" onAction="#reportsButtonClicked" prefHeight="96.0" prefWidth="425.0" text="REPORTS" textFill="#1caed7">
+                     <font>
+                        <Font name="Cantarell Bold" size="25.0" />
+                     </font>
+                  </Button>
+               </children>
+               <opaqueInsets>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+               </opaqueInsets>
+               
+            </VBox>
+            <BorderPane fx:id="attendanceBorderPane" prefHeight="200.0" prefWidth="200.0" visible="false">
+               <right>
+                  <VBox fx:id="imagePane" alignment="BOTTOM_LEFT" prefHeight="552.0" prefWidth="310.0" style="-fx-spacing: 5; -fx-padding: 4; -fx-border-color: black; -fx-border-width: 3;" BorderPane.alignment="CENTER">
+                     <children>
+                        <HBox style="-fx-border-color: black; -fx-border-radius: 10;">
+                           <children>
+                              <ImageView fx:id="userPic" fitHeight="213.0" fitWidth="296.0" pickOnBounds="true">
+                                 <cursor>
+                                    <Cursor fx:constant="OPEN_HAND" />
+                                 </cursor>
+                                 <image>
+                                    <Image url="@images/add_user.png" />
+                                 </image>
+                                 <viewport>
+                                    <Rectangle2D />
+                                 </viewport>
+                              </ImageView>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="226.0" prefWidth="298.0" style="-fx-border-color: black; -fx-border-radius: 10;">
+                           <children>
+                              <ImageView fx:id="lecturerPic" fitHeight="224.0" fitWidth="292.0" pickOnBounds="true">
+                                 <cursor>
+                                    <Cursor fx:constant="OPEN_HAND" />
+                                 </cursor>
+                                 <image>
+                                    <Image url="@images/staff.png" />
+                                 </image>
+                                 <viewport>
+                                    <Rectangle2D />
+                                 </viewport>
+                              </ImageView>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="74.0" prefWidth="212.0" style="-fx-spacing: 5;">
+                           <children>
+                              <Button fx:id="attendanceSubmit" cancelButton="true" defaultButton="true" mnemonicParsing="false" onAction="#submitAttendance" prefHeight="66.0" prefWidth="97.0" style="-fx-border-color: black; -fx-background-color: white; -fx-border-width: 5; -fx-border-radius: 20;">
+                                 <font>
+                                    <Font name="Bitstream Vera Sans Bold Oblique" size="14.0" />
+                                 </font>
+                                 <graphic>
+                                    <ImageView fitHeight="61.0" fitWidth="67.0">
+                                       <image>
+                                          <Image url="@images/agt_action_success.png" />
+                                       </image>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <VBox alignment="CENTER" style="-fx-spacing: 5;">
+                                 <children>
+                                    <DatePicker fx:id="datePicker" editable="false" onAction="#chooseDate" prefHeight="36.0" prefWidth="187.0" promptText="choose date" showWeekNumbers="true">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </DatePicker>
+                                    <HBox alignment="CENTER" style="-fx-spacing: 10;">
+                                       <children>
+                                          <Label style="-fx-background-color: WHITE;" text="TIME:" textFill="#44a19c">
+                                             <font>
+                                                <Font name="Bitstream Vera Sans Bold" size="17.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="time" alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="114.0" style="-fx-background-color: white;" text="Label" textFill="#3e28b9">
+                                             <font>
+                                                <Font size="20.0" />
+                                             </font></Label>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </right>
+               <center>
+                  <ScrollPane fx:id="attendancePane" hmax="0.0" minHeight="-Infinity" minWidth="-Infinity" pannable="true" prefHeight="506.0" prefWidth="982.0" vmax="0.0" BorderPane.alignment="CENTER">
+                     <content>
+                        <TableView fx:id="studentTable" editable="true" focusTraversable="false" prefHeight="560.0" prefWidth="985.0" style="-fx-border-width: 5; -fx-border-insets: 5; -fx-border-color: black; -fx-padding: 5;" tableMenuButtonVisible="true">
+                          <columns>
+                            <TableColumn fx:id="id" editable="false" prefWidth="78.0" sortType="DESCENDING" text="Number" />
+                            <TableColumn fx:id="matriculeC" editable="false" prefWidth="110.0" sortType="DESCENDING" text="MATRICULE" />
+                              <TableColumn fx:id="fNameC" editable="false" prefWidth="149.0" sortType="DESCENDING" text="FIRST NAME" />
+                              <TableColumn fx:id="lNameC" editable="false" prefWidth="243.0" sortType="DESCENDING" text="LAST NAME" />
+                              <TableColumn fx:id="programmeC" editable="false" minWidth="-1.0" prefWidth="165.0" sortType="DESCENDING" text="PROGRAMME" />
+                              <TableColumn fx:id="levelC" editable="false" minWidth="0.0" prefWidth="75.0" sortType="DESCENDING" text="LEVEL" />
+                              <TableColumn fx:id="roleCallC" editable="false" prefWidth="123.0" sortType="DESCENDING" text="ROLE CALL" />
+                          </columns>
+                           
+                                                   <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </TableView>
+                     </content>
+                  </ScrollPane>
+               </center>
+            </BorderPane>
+            <ScrollPane fx:id="registrationPane" fitToHeight="true" fitToWidth="true" pannable="true" prefHeight="537.0" prefWidth="1308.0">
+               <content>
+                  <BorderPane prefHeight="200.0" prefWidth="200.0">
+                     <bottom>
+                        <VBox>
+                           <children>
+                              <HBox alignment="CENTER_LEFT" prefHeight="39.0" prefWidth="971.0" style="-fx-spacing: 5; -fx-background-color: gray;">
+                                 <children>
+                                    <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="128.0" text="matricule" textFill="#f2f5f5">
+                                       <font>
+                                          <Font name="Bitstream Vera Sans Bold" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="35.0" prefWidth="168.0" text="First Name" textFill="#f5f3f3">
+                                       <font>
+                                          <Font name="Bitstream Vera Sans Bold" size="19.0" />
+                                       </font>
+                                    </Label>
+                                    <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="35.0" prefWidth="168.0" text="last Name" textFill="#f8f8f8">
+                                       <font>
+                                          <Font name="Bitstream Vera Sans Bold" size="19.0" />
+                                       </font>
+                                    </Label>
+                                    <Label alignment="CENTER" prefHeight="31.0" prefWidth="75.0" text="FACULTY" textFill="#ebe4e4">
+                                       <font>
+                                          <Font name="Bitstream Vera Sans Bold" size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Label alignment="CENTER" prefHeight="29.0" prefWidth="140.0" text="Department" textFill="#fff9f9">
+                                       <font>
+                                          <Font name="Bitstream Vera Sans Bold" size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <Label alignment="CENTER" layoutX="485.0" layoutY="22.0" prefHeight="15.0" prefWidth="136.0" text="Programme" textFill="#f8f4f4">
+                                       <font>
+                                          <Font name="Bitstream Vera Sans Bold" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label alignment="CENTER" prefHeight="29.0" prefWidth="63.0" text="Level" textFill="#f8f5f5">
+                                       <font>
+                                          <Font name="Bitstream Vera Sans Bold Oblique" size="15.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="46.0" prefWidth="1306.0" style="-fx-spacing: 5; -fx-background-color: gray;">
+                                 <children>
+                                    <TextField fx:id="matriculeField" alignment="CENTER" prefHeight="43.0" prefWidth="126.0" promptText="matricule">
+                                       <font>
+                                          <Font name="Bitstream Vera Sans Bold" size="16.0" />
+                                       </font>
+                                    </TextField>
+                                    <TextField fx:id="firstNameField" alignment="CENTER" prefHeight="46.0" prefWidth="171.0" promptText="first name">
+                                       <font>
+                                          <Font name="Bitstream Vera Sans Bold" size="17.0" />
+                                       </font>
+                                    </TextField>
+                                    <TextField fx:id="lastNameField" alignment="CENTER" prefHeight="42.0" prefWidth="171.0" promptText="last name" />
+                                    <ComboBox fx:id="facultyCombo" layoutX="696.0" layoutY="15.0" onAction="#selectFaculty" prefHeight="42.0" prefWidth="81.0" promptText="faculty">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </ComboBox>
+                                    <ComboBox fx:id="departmentCombo" onAction="#selectDepartment" prefHeight="39.0" prefWidth="149.0">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </ComboBox>
+                                    <ComboBox fx:id="programmeCombo" onAction="#selectProgramme" prefHeight="37.0" prefWidth="132.0">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </ComboBox>
+                                    <ComboBox fx:id="levelCombo" onAction="#selectLevel" prefHeight="37.0" prefWidth="72.0">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </ComboBox>
+                                    <Button fx:id="addUserButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#addUserToSystem" prefHeight="49.0" prefWidth="45.0">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                       <graphic>
+                                          <ImageView fitHeight="39.0" fitWidth="41.0" pickOnBounds="true">
+                                             <image>
+                                                <Image url="@images/add.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Button>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </bottom>
+                     <center>
+                        <TableView prefHeight="472.0" prefWidth="1105.0" BorderPane.alignment="CENTER">
+                           <columns>
+                              <TableColumn prefWidth="91.0" text="Matricule" />
+                              <TableColumn prefWidth="106.0" text="First name" />
+                              <TableColumn prefWidth="198.0" text="Last name" />
+                              <TableColumn prefWidth="198.0" text="Programme" />
+                              <TableColumn prefWidth="132.0" text="Current level" />
+                              <TableColumn prefWidth="177.0" text="Department" />
+                           </columns>
+                        </TableView>
+                     </center>
+                     <right>
+                        <HBox alignment="CENTER_RIGHT" prefHeight="472.0" prefWidth="249.0" style="-fx-background-color: gray;" BorderPane.alignment="CENTER_RIGHT" />
+                     </right>
+                  </BorderPane>
+               </content>
+            </ScrollPane>
+         </children>
+      </StackPane>
+   </children>
+</Pane>
