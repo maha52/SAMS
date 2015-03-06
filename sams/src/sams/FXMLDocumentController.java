@@ -202,7 +202,7 @@ public class FXMLDocumentController implements Initializable {
         }
     }
 
-    @FXML
+    @eFXML
     private void registrationButtonclicked(ActionEvent event) {
         toggleVisibility();
         registrationPane.setVisible(true);
@@ -232,11 +232,48 @@ public class FXMLDocumentController implements Initializable {
     private void reportsButtonClicked(ActionEvent event) {
         // toggleVisibility();
         Dialogs.create()
-                .title("Module Not Yet Implemented")
-                .masthead("Unimplemented module!")
-                .message("Please were are sorry that that the modulel\n"
-                        + "is still under development\n").showException(new IllegalStateException());
+                .title("Enter Command to view list of Reports")
+                .masthead("Choose Report to View")
+                .message("Loading..").showException(new IllegalStateException());
 
+	try {
+	    toggleVisibility();
+	    userLogout.setVisible(true);
+
+	    char command;
+	    String q;
+	    
+	    switch(command) {
+
+	    case 'B':  case 'b':  //this query prints the black listed students
+	    q = "select id, matricule, fname, lname, programme, current_level" + " from student_info, where( student_attends_courses values < 80/100 * avg(student_attends_courses))";
+	    break;
+
+	    //prints semester wise attendance.
+	    case 'S': case 's':
+		q = "select id, matricule, first name, last name " + "from student_info , order by programme " + "and group by department, level";
+		break;
+
+		//prints daily courses by lecturer
+	    case 'L': case 'l':
+		q = "select id, matricule, first_name, last_name, programme"
+		    + "from student_info and staff_id from staff, where ( student_attends_courses and staff_teaches_courses";
+		break;
+
+		//prints all courses taught on a day
+		case '
+
+	    }//end switch
+
+           if( db.connectedToDababase) {
+
+             db.setQuery(q);
+            
+             if( db.getRowCount() > 0)
+                 return true;
+           }
+           
+           return false;
     }
 
     @FXML
