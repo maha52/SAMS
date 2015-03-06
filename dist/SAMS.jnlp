@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="SAMS.jnlp">
+  <information>
+    <title>SAMS</title>
+    <vendor>wepngong</vendor>
+    <description>null</description>
+    <icon href="../../Pictures/Dev -pics/geek.jpg"  kind="splash"/>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <jfx:javafx-runtime version="8.0+" href="http://javadl.sun.com/webapps/download/GetFile/javafx-latest/windows-i586/javafx2.jnlp"/>
+  </resources>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="SAMS.jar" size="470120" download="eager" />
+    <jar href="lib/controlsfx-8.0.6.jar" size="848492" download="eager" />
+    <jar href="lib/controlsfx-8.20.8.jar" size="957666" download="eager" />
+    <jar href="lib/mysql-connector-java-5.1.23-bin.jar" size="834126" download="eager" />
+    <jar href="lib/openjfx-dialogs-1.0.2.jar" size="148557" download="eager" />
+  </resources>
+  <shortcut><desktop/></shortcut>
+  <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="SAMS" >
+    <param name="requiredFXVersion" value="8.0+"/>
+  </applet-desc>
+  <jfx:javafx-desc  width="800" height="600" main-class="sams.SAMS"  name="SAMS" />
+  <update check="always"/>
+</jnlp>
