@@ -3,7 +3,7 @@
 -- Host: localhost    Database: sams
 -- ------------------------------------------------------
 -- Server version	5.5.41-MariaDB-1ubuntu0.14.04.1
-use sams
+
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
@@ -18,7 +18,7 @@ use sams
 --
 -- Table structure for table `courses`
 --
-
+use sams
 DROP TABLE IF EXISTS `courses`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -65,7 +65,7 @@ CREATE TABLE `department` (
 
 LOCK TABLES `department` WRITE;
 /*!40000 ALTER TABLE `department` DISABLE KEYS */;
-INSERT INTO `department` VALUES ('COMP','COMPUTER ENGINEERING','FET'),('EEE','ELECTRICAL AND ELECTRONIC ENGI','FET');
+INSERT INTO `department` VALUES ('COMP','COMPUTER ENGINEERING','COT'),('COMP','COMPUTER ENGINEERING','FET'),('COMPCOT','COMPUTER ENGINEERING(COT)','COT'),('CST/GEO','CST Geography','FED'),('CST/HIS','Curriculum Studies and Teachin','FED'),('EEE','ELECTRICAL AND ELECTRONIC ENGI','FET');
 /*!40000 ALTER TABLE `department` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -89,8 +89,35 @@ CREATE TABLE `faculties` (
 
 LOCK TABLES `faculties` WRITE;
 /*!40000 ALTER TABLE `faculties` DISABLE KEYS */;
-INSERT INTO `faculties` VALUES ('FET','FACULTY OF ENGINEERING AND TEC');
+INSERT INTO `faculties` VALUES ('ASTI','ARTS and Translation'),('COT','College of Technology'),('FED','EDUCATION'),('FET','FACULTY OF ENGINEERING AND TEC');
 /*!40000 ALTER TABLE `faculties` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `programme`
+--
+
+DROP TABLE IF EXISTS `programme`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `programme` (
+  `dept_id` varchar(10) NOT NULL DEFAULT '',
+  `prog_name` varchar(10) NOT NULL DEFAULT '',
+  `specialty` varchar(6) NOT NULL,
+  `name_of_specialty` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`dept_id`,`prog_name`),
+  CONSTRAINT `programme_ibfk_1` FOREIGN KEY (`dept_id`) REFERENCES `department` (`dept_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `programme`
+--
+
+LOCK TABLES `programme` WRITE;
+/*!40000 ALTER TABLE `programme` DISABLE KEYS */;
+INSERT INTO `programme` VALUES ('COMP','BENG','NE','NETWORK ENGINEERING');
+/*!40000 ALTER TABLE `programme` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -179,7 +206,7 @@ CREATE TABLE `student_attends_courses` (
 
 LOCK TABLES `student_attends_courses` WRITE;
 /*!40000 ALTER TABLE `student_attends_courses` DISABLE KEYS */;
-INSERT INTO `student_attends_courses` VALUES (14,'FE12A107','CEF409','admin@gmail.com','2015-03-01',0,'23:58:10'),(15,'FE12A104','CEF409','admin@gmail.com','2015-03-01',0,'23:58:10'),(16,'FE12A127','CEF409','admin@gmail.com','2015-03-01',0,'23:58:10'),(17,'FE12A124','CEF409','admin@gmail.com','2015-03-01',0,'23:58:10'),(18,'FE12A197','CEF409','admin@gmail.com','2015-03-01',0,'23:58:11'),(19,'FE12A125','CEF409','admin@gmail.com','2015-03-01',0,'23:58:11'),(14,'FE12A107','CEF409','admin@gmail.com','2015-03-01',0,'23:59:16'),(15,'FE12A104','CEF409','admin@gmail.com','2015-03-01',0,'23:59:16'),(16,'FE12A127','CEF409','admin@gmail.com','2015-03-01',0,'23:59:16'),(17,'FE12A124','CEF409','admin@gmail.com','2015-03-01',0,'23:59:16'),(18,'FE12A197','CEF409','admin@gmail.com','2015-03-01',0,'23:59:16'),(19,'FE12A125','CEF409','admin@gmail.com','2015-03-01',0,'23:59:16'),(20,'FE12A198','CEF409','admin@gmail.com','2015-03-01',0,'23:59:16'),(21,'FE12A195','CEF409','admin@gmail.com','2015-03-01',0,'23:59:16'),(22,'FE12A201','CEF409','admin@gmail.com','2015-03-01',0,'23:59:16'),(23,'FE12A192','CEF409','admin@gmail.com','2015-03-01',0,'23:59:16'),(24,'FE12A221','CEF409','admin@gmail.com','2015-03-01',0,'23:59:16'),(25,'FE12A122','CEF409','admin@gmail.com','2015-03-01',0,'23:59:16'),(26,'FE12A121','CEF409','admin@gmail.com','2015-03-01',0,'23:59:16'),(27,'FE12A132','CEF409','admin@gmail.com','2015-03-01',0,'23:59:16');
+INSERT INTO `student_attends_courses` VALUES (14,'FE12A107','CEF409','admin@gmail.com','2015-03-01',0,'23:58:10'),(15,'FE12A104','CEF409','admin@gmail.com','2015-03-01',0,'23:58:10'),(16,'FE12A127','CEF409','admin@gmail.com','2015-03-01',0,'23:58:10'),(17,'FE12A124','CEF409','admin@gmail.com','2015-03-01',0,'23:58:10'),(18,'FE12A197','CEF409','admin@gmail.com','2015-03-01',0,'23:58:11'),(19,'FE12A125','CEF409','admin@gmail.com','2015-03-01',0,'23:58:11'),(14,'FE12A107','CEF409','admin@gmail.com','2015-03-01',0,'23:59:16'),(15,'FE12A104','CEF409','admin@gmail.com','2015-03-01',0,'23:59:16'),(16,'FE12A127','CEF409','admin@gmail.com','2015-03-01',0,'23:59:16'),(17,'FE12A124','CEF409','admin@gmail.com','2015-03-01',0,'23:59:16'),(18,'FE12A197','CEF409','admin@gmail.com','2015-03-01',0,'23:59:16'),(19,'FE12A125','CEF409','admin@gmail.com','2015-03-01',0,'23:59:16'),(20,'FE12A198','CEF409','admin@gmail.com','2015-03-01',0,'23:59:16'),(21,'FE12A195','CEF409','admin@gmail.com','2015-03-01',0,'23:59:16'),(22,'FE12A201','CEF409','admin@gmail.com','2015-03-01',0,'23:59:16'),(23,'FE12A192','CEF409','admin@gmail.com','2015-03-01',0,'23:59:16'),(24,'FE12A221','CEF409','admin@gmail.com','2015-03-01',0,'23:59:16'),(25,'FE12A122','CEF409','admin@gmail.com','2015-03-01',0,'23:59:16'),(26,'FE12A121','CEF409','admin@gmail.com','2015-03-01',0,'23:59:16'),(27,'FE12A132','CEF409','admin@gmail.com','2015-03-01',0,'23:59:16'),(16,'FE12A127','CEF409','admin@gmail.com','2015-06-03',0,'23:43:45'),(23,'FE12A192','CEF409','admin@gmail.com','2015-06-03',0,'23:43:46'),(16,'FE12A127','CEF409','admin@gmail.com','2015-06-03',0,'23:44:25'),(23,'FE12A192','CEF409','admin@gmail.com','2015-06-03',0,'23:44:25'),(14,'FE12A107','CEF409','admin@gmail.com','2015-06-03',0,'23:50:40'),(15,'FE12A104','CEF409','admin@gmail.com','2015-06-03',0,'23:50:40'),(16,'FE12A127','CEF409','admin@gmail.com','2015-06-03',0,'23:50:40'),(17,'FE12A124','CEF409','admin@gmail.com','2015-06-03',0,'23:50:40'),(18,'FE12A197','CEF409','admin@gmail.com','2015-06-03',0,'23:50:40'),(19,'FE12A125','CEF409','admin@gmail.com','2015-06-03',0,'23:50:40'),(20,'FE12A198','CEF409','admin@gmail.com','2015-06-03',0,'23:50:40'),(21,'FE12A195','CEF409','admin@gmail.com','2015-06-03',0,'23:50:40'),(22,'FE12A201','CEF409','admin@gmail.com','2015-06-03',0,'23:50:40'),(23,'FE12A192','CEF409','admin@gmail.com','2015-06-03',0,'23:50:40'),(24,'FE12A221','CEF409','admin@gmail.com','2015-06-03',0,'23:50:40'),(25,'FE12A122','CEF409','admin@gmail.com','2015-06-03',0,'23:50:40'),(26,'FE12A121','CEF409','admin@gmail.com','2015-06-03',0,'23:50:40'),(27,'FE12A132','CEF409','admin@gmail.com','2015-06-03',0,'23:50:40'),(14,'FE12A107','CEF409','admin@gmail.com','2015-06-03',0,'23:59:35'),(15,'FE12A104','CEF409','admin@gmail.com','2015-06-03',0,'23:59:35'),(16,'FE12A127','CEF409','admin@gmail.com','2015-06-03',0,'23:59:35'),(17,'FE12A124','CEF409','admin@gmail.com','2015-06-03',0,'23:59:35'),(18,'FE12A197','CEF409','admin@gmail.com','2015-06-03',0,'23:59:35'),(19,'FE12A125','CEF409','admin@gmail.com','2015-06-03',0,'23:59:35'),(20,'FE12A198','CEF409','admin@gmail.com','2015-06-03',0,'23:59:35'),(21,'FE12A195','CEF409','admin@gmail.com','2015-06-03',0,'23:59:35'),(22,'FE12A201','CEF409','admin@gmail.com','2015-06-03',0,'23:59:35'),(23,'FE12A192','CEF409','admin@gmail.com','2015-06-03',0,'23:59:35'),(14,'FE12A107','CEF409','admin@gmail.com','2015-07-03',0,'00:34:48'),(15,'FE12A104','CEF409','admin@gmail.com','2015-07-03',0,'00:34:48'),(17,'FE12A124','CEF409','admin@gmail.com','2015-07-03',0,'00:34:48'),(18,'FE12A197','CEF409','admin@gmail.com','2015-07-03',0,'00:34:48'),(19,'FE12A125','CEF409','admin@gmail.com','2015-07-03',0,'00:34:48'),(20,'FE12A198','CEF409','admin@gmail.com','2015-07-03',0,'00:34:48'),(21,'FE12A195','CEF409','admin@gmail.com','2015-07-03',0,'00:34:49'),(22,'FE12A201','CEF409','admin@gmail.com','2015-07-03',0,'00:34:49'),(24,'FE12A221','CEF409','admin@gmail.com','2015-07-03',0,'00:34:49'),(25,'FE12A122','CEF409','admin@gmail.com','2015-07-03',0,'00:34:49'),(26,'FE12A121','CEF409','admin@gmail.com','2015-07-03',0,'00:34:49'),(27,'FE12A132','CEF409','admin@gmail.com','2015-07-03',0,'00:34:49'),(14,'FE12A107','CEF409','admin@gmail.com','2015-07-03',0,'10:57:53'),(15,'FE12A104','CEF409','admin@gmail.com','2015-07-03',0,'10:57:53'),(16,'FE12A127','CEF409','admin@gmail.com','2015-07-03',0,'10:57:53'),(17,'FE12A124','CEF409','admin@gmail.com','2015-07-03',0,'10:57:53'),(18,'FE12A197','CEF409','admin@gmail.com','2015-07-03',0,'10:57:53'),(19,'FE12A125','CEF409','admin@gmail.com','2015-07-03',0,'10:57:53'),(20,'FE12A198','CEF409','admin@gmail.com','2015-07-03',0,'10:57:53'),(21,'FE12A195','CEF409','admin@gmail.com','2015-07-03',0,'10:57:53'),(24,'FE12A221','CEF409','admin@gmail.com','2015-07-03',0,'10:57:53'),(25,'FE12A122','CEF409','admin@gmail.com','2015-07-03',0,'10:57:53'),(26,'FE12A121','CEF409','admin@gmail.com','2015-07-03',0,'10:57:53'),(25,'FE12A122','CEF409','admin@gmail.com','2015-07-03',0,'10:58:17'),(26,'FE12A121','CEF409','admin@gmail.com','2015-07-03',0,'10:58:17'),(27,'FE12A132','CEF409','admin@gmail.com','2015-07-03',0,'10:58:17');
 /*!40000 ALTER TABLE `student_attends_courses` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -258,4 +285,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-03-05 15:26:01
+-- Dump completed on 2015-03-07 13:22:03

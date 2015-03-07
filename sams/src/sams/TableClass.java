@@ -231,37 +231,38 @@ public class TableClass {
         }
     }
 
-    /* public void makeTable(String query, TableColumn C1, TableColumn C2, TableColumn C3, TableColumn C4, TableColumn C5, TableColumn C6, TableColumn C7, TableColumn C8, TableView tabId) throws SQLException {
-     C1.setCellValueFactory(new PropertyValueFactory<>("col1"));
-     C2.setCellValueFactory(new PropertyValueFactory<>("col2"));
-     C3.setCellValueFactory(new PropertyValueFactory<>("col3"));
-     C4.setCellValueFactory(new PropertyValueFactory<>("col4"));
-     C5.setCellValueFactory(new PropertyValueFactory<>("col5"));
-     C6.setCellValueFactory(new PropertyValueFactory<>("col6"));
-     C7.setCellValueFactory(new PropertyValueFactory<>("col7"));
-     C8.setCellValueFactory(new PropertyValueFactory<>("col8"));
+    public void makeTable(String query, TableColumn C1, TableColumn C2, TableColumn C3, TableColumn C4, TableColumn C5, TableColumn C6, TableColumn C7, TableColumn C8, TableView tabId) throws SQLException {
+        C1.setCellValueFactory(new PropertyValueFactory<>("col1"));
+        C2.setCellValueFactory(new PropertyValueFactory<>("col2"));
+        C3.setCellValueFactory(new PropertyValueFactory<>("col3"));
+        C4.setCellValueFactory(new PropertyValueFactory<>("col4"));
+        C5.setCellValueFactory(new PropertyValueFactory<>("col5"));
+        C6.setCellValueFactory(new PropertyValueFactory<>("col6"));
+        C7.setCellValueFactory(new PropertyValueFactory<>("col7"));
+        C8.setCellValueFactory(new PropertyValueFactory<>("col8"));
 
-     composeData = FXCollections.observableArrayList();
-     tabId.setItems(composeData);
+        composeData = FXCollections.observableArrayList();
+        tabId.setItems(composeData);
 
-     System.out.println("Printing the Users History");
-     System.out.println("Query is \n" + query);
-     db.setQuery(query);
+        System.out.println("Printing the Users History");
+        System.out.println("Query is \n" + query);
+        db.setQuery(query);
 
-     System.out.println("before loop");
-     for (int i = 0; i < db.getRowCount(); i++) {
-     Student trans = new Student();
+        System.out.println("before loop");
+        for (int i = 0; i < db.getRowCount(); i++) {
+            Student trans = new Student();
 
-     trans.col1.setValue(db.getValueAt(i, 0).toString());
-     trans.col2.setValue(db.getValueAt(i, 1).toString());
-     trans.col3.setValue(db.getValueAt(i, 2).toString());
-     trans.col4.setValue(db.getValueAt(i, 3).toString());
-     trans.col5.setValue(db.getValueAt(i, 4).toString());
-     trans.col6.setValue(db.getValueAt(i, 5).toString());
-     trans.col7.setValue(db.getValueAt(i, 6).toString());
-     trans.col8.setValue(db.getValueAt(i, 7).toString());
-     composeData.add(trans);
-     }
+            trans.col1.setValue(db.getValueAt(i, 0).toString());
+            trans.col2.setValue(db.getValueAt(i, 1).toString());
+            trans.col3.setValue(db.getValueAt(i, 2).toString());
+            trans.col4.setValue(db.getValueAt(i, 3).toString());
+            trans.col5.setValue(db.getValueAt(i, 4).toString());
+            trans.col6.setValue(db.getValueAt(i, 5).toString());
+            trans.col7.setCenterShape(true);
+            trans.col7.setCursor(Cursor.HAND);
+            trans.col8.setValue(db.getValueAt(i, 6).toString());
+            composeData.add(trans);
+        }
 
-     }*/
+    }
 }

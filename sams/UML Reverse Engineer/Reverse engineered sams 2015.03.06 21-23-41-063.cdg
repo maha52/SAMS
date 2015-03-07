@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Reverse engineered sams 2015.03.06 21-23-41-063">
+  <ClassDiagramComponents>
+    <Class xPosition="20.0" yPosition="20.0" package="sams" name="DatabaseHelper" visibility="public">
+      <Constructors>
+        <Constructor name="DatabaseHelper" visibility="public"/>
+      </Constructors>
+      <Fields>
+        <Field name="connection" visibility="public" type="Connection"/>
+        <Field name="resultSet" visibility="public" type="ResultSet"/>
+        <Field name="metaData" visibility="public" type="ResultSetMetaData"/>
+        <Field name="numberOfRows" visibility="public" type="int"/>
+        <Field name="statement" visibility="public" type="Statement"/>
+        <Field name="connectedToDatabase" visibility="public" type="boolean"/>
+        <Field name="result" visibility="public" type="ResultSet"/>
+        <Field name="metadata" visibility="public" type="ResultSetMetaData"/>
+        <Field name="ps" visibility="package" type="PreparedStatement"/>
+      </Fields>
+      <Methods>
+        <Method name="getPcName" visibility="public" returnType="String"/>
+        <Method name="setQuery" visibility="public" returnType="void" isFinal="true">
+          <Argument type="String" name="query"/>
+        </Method>
+        <Method name="getColumnCount" visibility="public" returnType="int"/>
+        <Method name="getColumnName" visibility="public" returnType="String">
+          <Argument type="int" name="column"/>
+        </Method>
+        <Method name="getRowCount" visibility="public" returnType="int"/>
+        <Method name="getValueAt" visibility="public" returnType="Object">
+          <Argument type="int" name="row"/>
+          <Argument type="int" name="column"/>
+        </Method>
+        <Method name="getConnection" visibility="public" returnType="Connection"/>
+        <Method name="getStatement" visibility="public" returnType="Statement"/>
+        <Method name="getResultSet" visibility="public" returnType="ResultSet"/>
+        <Method name="disconnectFromDatabase" visibility="public" returnType="void"/>
+        <Method name="Query" visibility="public" returnType="int">
+          <Argument type="String" name="sql"/>
+        </Method>
+        <Method name="ExecuteQuery" visibility="public" returnType="ArrayList">
+          <Argument type="String" name="sql"/>
+        </Method>
+        <Method name="initDB" visibility="private" returnType="void"/>
+      </Methods>
+    </Class>
+    <Class xPosition="320.0" yPosition="20.0" package="sams" name="Student" visibility="public">
+      <Constructors>
+        <Constructor name="Student" visibility="public"/>
+      </Constructors>
+      <Fields>
+        <Field name="col1" visibility="public" type="SimpleStringProperty" isFinal="true"/>
+        <Field name="col2" visibility="public" type="SimpleStringProperty" isFinal="true"/>
+        <Field name="col3" visibility="public" type="SimpleStringProperty" isFinal="true"/>
+        <Field name="col4" visibility="public" type="SimpleStringProperty" isFinal="true"/>
+        <Field name="col5" visibility="public" type="SimpleStringProperty" isFinal="true"/>
+        <Field name="col6" visibility="public" type="SimpleStringProperty" isFinal="true"/>
+        <Field name="col7" visibility="public" type="CheckBox" isFinal="true"/>
+      </Fields>
+      <Methods>
+        <Method name="getCol1" visibility="public" returnType="String"/>
+        <Method name="getCol2" visibility="public" returnType="String"/>
+        <Method name="getCol3" visibility="public" returnType="String"/>
+        <Method name="getCol4" visibility="public" returnType="String"/>
+        <Method name="getCol5" visibility="public" returnType="String"/>
+        <Method name="getCol6" visibility="public" returnType="String"/>
+        <Method name="getCol7" visibility="public" returnType="CheckBox"/>
+      </Methods>
+    </Class>
+    <Class xPosition="620.0" yPosition="20.0" package="sams" name="TableClass" visibility="public">
+      <Constructors>
+        <Constructor name="TableClass" visibility="public"/>
+      </Constructors>
+      <Fields>
+        <Field name="db" visibility="package" type="DatabaseHelper"/>
+        <Field name="composeData" visibility="package" type="ObservableList&lt;Student&gt;"/>
+      </Fields>
+      <Methods>
+        <Method name="makeTable" visibility="public" returnType="void">
+          <Argument type="String" name="query"/>
+          <Argument type="TableColumn" name="C1"/>
+          <Argument type="TableView" name="tabId"/>
+        </Method>
+        <Method name="makeTable" visibility="public" returnType="void">
+          <Argument type="String" name="query"/>
+          <Argument type="TableColumn" name="C1"/>
+          <Argument type="TableColumn" name="C2"/>
+          <Argument type="TableView" name="tabId"/>
+        </Method>
+        <Method name="makeTable" visibility="public" returnType="void">
+          <Argument type="String" name="query"/>
+          <Argument type="TableColumn" name="C1"/>
+          <Argument type="TableColumn" name="C2"/>
+          <Argument type="TableColumn" name="C3"/>
+          <Argument type="TableView" name="tabId"/>
+        </Method>
+        <Method name="makeTable" visibility="public" returnType="void">
+          <Argument type="String" name="query"/>
+          <Argument type="TableColumn" name="C1"/>
+          <Argument type="TableColumn" name="C2"/>
+          <Argument type="TableColumn" name="C3"/>
+          <Argument type="TableColumn" name="C4"/>
+          <Argument type="TableView" name="tabId"/>
+        </Method>
+        <Method name="makeTable" visibility="public" returnType="void">
+          <Argument type="String" name="query"/>
+          <Argument type="TableColumn" name="C1"/>
+          <Argument type="TableColumn" name="C2"/>
+          <Argument type="TableColumn" name="C3"/>
+          <Argument type="TableColumn" name="C4"/>
+          <Argument type="TableColumn" name="C5"/>
+          <Argument type="TableView" name="tabId"/>
+        </Method>
+        <Method name="makeTable" visibility="public" returnType="void">
+          <Argument type="String" name="query"/>
+          <Argument type="TableColumn" name="C1"/>
+          <Argument type="TableColumn" name="C2"/>
+          <Argument type="TableColumn" name="C3"/>
+          <Argument type="TableColumn" name="C4"/>
+          <Argument type="TableColumn" name="C5"/>
+          <Argument type="TableColumn" name="C6"/>
+          <Argument type="TableView" name="tabId"/>
+        </Method>
+        <Method name="makeTable" visibility="public" returnType="void">
+          <Argument type="String" name="query"/>
+          <Argument type="TableColumn" name="C1"/>
+          <Argument type="TableColumn" name="C2"/>
+          <Argument type="TableColumn" name="C3"/>
+          <Argument type="TableColumn" name="C4"/>
+          <Argument type="TableColumn" name="C5"/>
+          <Argument type="TableColumn" name="C6"/>
+          <Argument type="TableColumn" name="C7"/>
+          <Argument type="TableView" name="tabId"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="db" source="TableClass" target="DatabaseHelper" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="composeData" source="TableClass" target="Student" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

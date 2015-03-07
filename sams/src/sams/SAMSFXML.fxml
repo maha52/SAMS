@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.paint.*?>
 <?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.*?>
@@ -18,21 +19,6 @@
                      <image>
                         <Image url="@images/1_home.png" />
                      </image>
-                  </ImageView>
-               </graphic>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-            <Button fx:id="backButton" layoutX="935.0" layoutY="12.0" mnemonicParsing="false" onAction="#goBack" prefHeight="51.0" prefWidth="65.0" style="-fx-border-color: black; -fx-border-radius: 10;">
-               <graphic>
-                  <ImageView fitHeight="41.0" fitWidth="55.0" pickOnBounds="true">
-                     <image>
-                        <Image url="@images/back.jpg" />
-                     </image>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
                   </ImageView>
                </graphic>
                <cursor>
@@ -225,13 +211,13 @@
                </opaqueInsets>
                
             </VBox>
-            <BorderPane fx:id="attendanceBorderPane" prefHeight="200.0" prefWidth="200.0" visible="false">
+            <BorderPane fx:id="attendanceBorderPane" prefHeight="200.0" prefWidth="200.0">
                <right>
-                  <VBox fx:id="imagePane" alignment="BOTTOM_LEFT" prefHeight="552.0" prefWidth="310.0" style="-fx-spacing: 5; -fx-padding: 4; -fx-border-color: black; -fx-border-width: 3;" BorderPane.alignment="CENTER">
+                  <VBox fx:id="imagePane" alignment="BOTTOM_LEFT" prefHeight="562.0" prefWidth="251.0" style="-fx-spacing: 5; -fx-padding: 4; -fx-border-color: black; -fx-border-width: 3;" BorderPane.alignment="CENTER">
                      <children>
-                        <HBox style="-fx-border-color: black; -fx-border-radius: 10;">
+                        <HBox prefHeight="161.0" prefWidth="241.0" style="-fx-border-color: black; -fx-border-radius: 10;">
                            <children>
-                              <ImageView fx:id="userPic" fitHeight="213.0" fitWidth="296.0" pickOnBounds="true">
+                              <ImageView fx:id="userPic" fitHeight="213.0" fitWidth="230.0" pickOnBounds="true">
                                  <cursor>
                                     <Cursor fx:constant="OPEN_HAND" />
                                  </cursor>
@@ -244,9 +230,9 @@
                               </ImageView>
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER" prefHeight="226.0" prefWidth="298.0" style="-fx-border-color: black; -fx-border-radius: 10;">
+                        <HBox alignment="CENTER" prefHeight="226.0" prefWidth="260.0" style="-fx-border-color: black; -fx-border-radius: 10;">
                            <children>
-                              <ImageView fx:id="lecturerPic" fitHeight="224.0" fitWidth="292.0" pickOnBounds="true">
+                              <ImageView fx:id="lecturerPic" fitHeight="217.0" fitWidth="239.0" pickOnBounds="true">
                                  <cursor>
                                     <Cursor fx:constant="OPEN_HAND" />
                                  </cursor>
@@ -259,43 +245,44 @@
                               </ImageView>
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER" prefHeight="74.0" prefWidth="212.0" style="-fx-spacing: 5;">
+                        <HBox alignment="CENTER" prefHeight="99.0" prefWidth="241.0" style="-fx-spacing: 5;">
                            <children>
-                              <Button fx:id="attendanceSubmit" cancelButton="true" defaultButton="true" mnemonicParsing="false" onAction="#submitAttendance" prefHeight="66.0" prefWidth="97.0" style="-fx-border-color: black; -fx-background-color: white; -fx-border-width: 5; -fx-border-radius: 20;">
-                                 <font>
-                                    <Font name="Bitstream Vera Sans Bold Oblique" size="14.0" />
-                                 </font>
-                                 <graphic>
-                                    <ImageView fitHeight="61.0" fitWidth="67.0">
-                                       <image>
-                                          <Image url="@images/agt_action_success.png" />
-                                       </image>
-                                       <cursor>
-                                          <Cursor fx:constant="HAND" />
-                                       </cursor>
-                                    </ImageView>
-                                 </graphic>
-                              </Button>
-                              <VBox alignment="CENTER" style="-fx-spacing: 5;">
+                              <VBox alignment="CENTER" spacing="5.0" HBox.hgrow="ALWAYS">
                                  <children>
-                                    <DatePicker fx:id="datePicker" editable="false" onAction="#chooseDate" prefHeight="36.0" prefWidth="187.0" promptText="choose date" showWeekNumbers="true">
+                                    <Button fx:id="attendanceSubmit" cancelButton="true" defaultButton="true" mnemonicParsing="false" onAction="#submitAttendance" prefHeight="53.0" prefWidth="43.0" style="-fx-border-color: black; -fx-background-color: white; -fx-border-width: 5; -fx-border-radius: 20;">
+                                       <font>
+                                          <Font name="Bitstream Vera Sans Bold Oblique" size="14.0" />
+                                       </font>
+                                       <graphic>
+                                          <ImageView fitHeight="33.0" fitWidth="32.0">
+                                             <image>
+                                                <Image url="@images/agt_action_success.png" />
+                                             </image>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                          </ImageView>
+                                       </graphic>
+                                    </Button>
+                                    <Label style="-fx-background-color: WHITE;" text="TIME:" textFill="#44a19c">
+                                       <font>
+                                          <Font name="Bitstream Vera Sans Bold" size="17.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <VBox alignment="CENTER" prefHeight="98.0" prefWidth="166.0" style="-fx-spacing: 15;">
+                                 <children>
+                                    <DatePicker fx:id="datePicker" editable="false" onAction="#chooseDate" prefHeight="38.0" prefWidth="174.0" promptText="choose date" showWeekNumbers="true">
                                        <cursor>
                                           <Cursor fx:constant="HAND" />
                                        </cursor>
                                     </DatePicker>
-                                    <HBox alignment="CENTER" style="-fx-spacing: 10;">
-                                       <children>
-                                          <Label style="-fx-background-color: WHITE;" text="TIME:" textFill="#44a19c">
-                                             <font>
-                                                <Font name="Bitstream Vera Sans Bold" size="17.0" />
-                                             </font>
-                                          </Label>
-                                          <Label fx:id="time" alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="114.0" style="-fx-background-color: white;" text="Label" textFill="#3e28b9">
-                                             <font>
-                                                <Font size="20.0" />
-                                             </font></Label>
-                                       </children>
-                                    </HBox>
+                                    <Label fx:id="time" alignment="CENTER" contentDisplay="CENTER" prefHeight="28.0" prefWidth="147.0" style="-fx-background-color: white;" text="Label" textFill="#3e28b9">
+                                       <font>
+                                          <Font name="Bitstream Vera Sans Bold Oblique" size="23.0" />
+                                       </font>
+                                    </Label>
                                  </children>
                               </VBox>
                            </children>
@@ -304,17 +291,18 @@
                   </VBox>
                </right>
                <center>
-                  <ScrollPane fx:id="attendancePane" hmax="0.0" minHeight="-Infinity" minWidth="-Infinity" pannable="true" prefHeight="506.0" prefWidth="982.0" vmax="0.0" BorderPane.alignment="CENTER">
+                  <ScrollPane fx:id="attendancePane" hmax="0.0" minHeight="-Infinity" minWidth="-Infinity" pannable="true" prefHeight="562.0" prefWidth="1006.0" vmax="0.0" BorderPane.alignment="CENTER">
                      <content>
-                        <TableView fx:id="studentTable" editable="true" focusTraversable="false" prefHeight="560.0" prefWidth="985.0" style="-fx-border-width: 5; -fx-border-insets: 5; -fx-border-color: black; -fx-padding: 5;" tableMenuButtonVisible="true">
+                        <TableView fx:id="studentTable" editable="true" focusTraversable="false" prefHeight="560.0" prefWidth="1038.0" style="-fx-border-width: 5; -fx-border-insets: 5; -fx-border-color: black; -fx-padding: 5;" tableMenuButtonVisible="true">
                           <columns>
                             <TableColumn fx:id="id" editable="false" prefWidth="78.0" sortType="DESCENDING" text="Number" />
                             <TableColumn fx:id="matriculeC" editable="false" prefWidth="110.0" sortType="DESCENDING" text="MATRICULE" />
-                              <TableColumn fx:id="fNameC" editable="false" prefWidth="149.0" sortType="DESCENDING" text="FIRST NAME" />
-                              <TableColumn fx:id="lNameC" editable="false" prefWidth="243.0" sortType="DESCENDING" text="LAST NAME" />
-                              <TableColumn fx:id="programmeC" editable="false" minWidth="-1.0" prefWidth="165.0" sortType="DESCENDING" text="PROGRAMME" />
+                              <TableColumn fx:id="fNameC" editable="false" prefWidth="112.0" sortType="DESCENDING" text="FIRST NAME" />
+                              <TableColumn fx:id="lNameC" editable="false" prefWidth="236.0" sortType="DESCENDING" text="LAST NAME" />
+                              <TableColumn fx:id="programmeC" editable="false" minWidth="-1.0" prefWidth="209.0" sortType="DESCENDING" text="PROGRAMME" />
                               <TableColumn fx:id="levelC" editable="false" minWidth="0.0" prefWidth="75.0" sortType="DESCENDING" text="LEVEL" />
                               <TableColumn fx:id="roleCallC" editable="false" prefWidth="123.0" sortType="DESCENDING" text="ROLE CALL" />
+                              <TableColumn fx:id="attendanceC" prefWidth="75.0" text="A" />
                           </columns>
                            
                                                    <padding>
@@ -325,7 +313,7 @@
                   </ScrollPane>
                </center>
             </BorderPane>
-            <ScrollPane fx:id="registrationPane" fitToHeight="true" fitToWidth="true" pannable="true" prefHeight="537.0" prefWidth="1308.0">
+            <ScrollPane fx:id="registrationPane" fitToHeight="true" fitToWidth="true" pannable="true" prefHeight="537.0" prefWidth="1308.0" visible="false">
                <content>
                   <BorderPane prefHeight="200.0" prefWidth="200.0">
                      <bottom>
@@ -438,6 +426,80 @@
                   </BorderPane>
                </content>
             </ScrollPane>
+            <SplitPane fx:id="reportsRootPane" dividerPositions="0.2505567928730512" focusTraversable="true" minHeight="-Infinity" minWidth="-Infinity" prefHeight="537.0" prefWidth="1308.0">
+               <items>
+                  <VBox alignment="CENTER" layoutX="1.0" layoutY="6.0" prefHeight="549.0" prefWidth="226.0" spacing="10.0">
+                     <children>
+                        <Label alignment="CENTER" layoutX="14.0" layoutY="6.0" minWidth="60.0" prefHeight="29.0" prefWidth="198.0" style="&#10;" text="TYPES OF REPORTS" textAlignment="CENTER" wrapText="false">
+                           <font>
+                              <Font size="18.0" fx:id="x1" />
+                           </font>
+                           <textFill>
+                              <Color blue="0.624" green="0.624" red="0.624" fx:id="x2" />
+                           </textFill>
+                        </Label>
+                        <Separator prefHeight="15.0" prefWidth="323.0" style="-fx-background-color: blue;" />
+                        <Button fx:id="dailyforAllcourses" alignment="CENTER" layoutX="19.0" layoutY="55.0" mnemonicParsing="false" onAction="#getDailyAttendanceForAllCourses" prefHeight="44.0" prefWidth="286.0" text="DAILY(FOR ALL COURSES)" textFill="#243d86">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="daiyPerCourse" layoutX="20.0" layoutY="100.0" mnemonicParsing="false" onAction="#dailyPerCourse" prefHeight="53.0" prefWidth="284.0" text="DAILY(SUBJECT WISE)" textFill="#4343b2">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="semesterWiseAttendance" layoutX="20.0" layoutY="145.0" mnemonicParsing="false" onAction="#getSemesterWiseAttendance" prefHeight="53.0" prefWidth="280.0" text="SEMESTER WISE" textFill="#234d86">
+                           <font>
+                              <Font size="29.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="blacklistedStudents" layoutX="23.0" layoutY="190.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="275.0" text="BLACKLISTED" textFill="#141212">
+                           <font>
+                              <Font name="System Bold" size="30.0" />
+                           </font>
+                        </Button>
+                        <ComboBox fx:id="rFacultyCombo" layoutX="26.0" layoutY="228.0" nodeOrientation="LEFT_TO_RIGHT" onAction="#selectRFaculty" prefHeight="44.0" prefWidth="279.0" promptText="SELECT FACULTY" />
+                        <ComboBox fx:id="rdepartmentCombo" layoutX="26.0" layoutY="262.0" nodeOrientation="LEFT_TO_RIGHT" onAction="#selectRDepartment" prefHeight="37.0" prefWidth="279.0" promptText="SELECT DEPARTMENT">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </ComboBox>
+                        <ComboBox fx:id="rProgrammeCombo" layoutX="26.0" layoutY="302.0" onAction="#selectRProgramme" prefHeight="45.0" prefWidth="275.0" promptText="SELECT PROGRAMME" />
+                        <ComboBox fx:id="rCourseCombo" layoutX="28.0" layoutY="339.0" onAction="#selectRCourse" prefHeight="36.0" prefWidth="268.0" promptText="SELECT COURSE" />
+                        <Button mnemonicParsing="false">
+                           <graphic>
+                              <ImageView fitHeight="14.0" fitWidth="55.0">
+                                 <image>
+                                    <Image url="@images/agt_action_success.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </VBox>
+                  <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="549.0" prefWidth="991.0">
+                     <content>
+                        <TableView fx:id="reportsTable" prefHeight="200.0" prefWidth="200.0" tableMenuButtonVisible="true">
+                           <columns>
+                              <TableColumn fx:id="rMatriculeC" prefWidth="104.0" text="MATRICULE" />
+                              <TableColumn fx:id="rFirstName" prefWidth="117.0" text="FIRST NAME" />
+                              <TableColumn fx:id="rLastName" prefWidth="106.0" text="LAST NAME" />
+                              <TableColumn fx:id="rProgramme" prefWidth="117.0" text="PROGRAMME" />
+                              <TableColumn fx:id="rlevel" prefWidth="75.0" text="LEVEL" />
+                              <TableColumn fx:id="rPresent" prefWidth="77.0" text="PRESENT" />
+                              <TableColumn fx:id="rAbsent" prefWidth="123.0" text="ABSENT" />
+                              <TableColumn fx:id="rPercentAbsent" prefWidth="97.0" text="\% ABSENT" />
+                              <TableColumn fx:id="rRemarks" prefWidth="146.0" text="REMARKS" />
+                           </columns>
+                        </TableView>
+                     </content>
+                  </ScrollPane>
+               </items>
+            </SplitPane>
          </children>
       </StackPane>
    </children>

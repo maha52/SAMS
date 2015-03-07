@@ -5,6 +5,7 @@
  */
 package sams;
 
+import com.mysql.jdbc.MysqlDataTruncation;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -81,7 +82,7 @@ public class DatabaseHelper {
     }
 
     public final void setQuery(String query)
-            throws SQLException, IllegalStateException {
+            throws SQLException, IllegalStateException ,MysqlDataTruncation{
         ps = connection.prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
         // ensure database connection is available
         if (!connectedToDatabase) {
@@ -196,7 +197,7 @@ public class DatabaseHelper {
         } // end if
     } // end method disconnectFromDatabase
 
-    public int Query(String sql) {
+    public int Query(String sql) throws MysqlDataTruncation{
         try {
             statement = connection.createStatement();
             // System.out.println(sql);
