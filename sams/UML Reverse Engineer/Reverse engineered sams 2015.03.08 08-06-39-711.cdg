@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<ClassDiagram name="Reverse engineered sams 2015.03.06 21-23-41-063">
+<ClassDiagram name="Reverse engineered sams 2015.03.08 08-06-39-711">
   <ClassDiagramComponents>
-    <Class xPosition="298.0" yPosition="208.0" package="sams" name="DatabaseHelper" visibility="public">
+    <Class xPosition="20.0" yPosition="20.0" package="sams" name="DatabaseHelper" visibility="public">
       <Constructors>
         <Constructor name="DatabaseHelper" visibility="public"/>
       </Constructors>
@@ -44,7 +44,7 @@
         <Method name="initDB" visibility="private" returnType="void"/>
       </Methods>
     </Class>
-    <Class xPosition="44.0" yPosition="4.0" package="sams" name="Student" visibility="public">
+    <Class xPosition="320.0" yPosition="20.0" package="sams" name="Student" visibility="public">
       <Constructors>
         <Constructor name="Student" visibility="public"/>
       </Constructors>
@@ -56,6 +56,7 @@
         <Field name="col5" visibility="public" type="SimpleStringProperty" isFinal="true"/>
         <Field name="col6" visibility="public" type="SimpleStringProperty" isFinal="true"/>
         <Field name="col7" visibility="public" type="CheckBox" isFinal="true"/>
+        <Field name="col8" visibility="public" type="SimpleStringProperty" isFinal="true"/>
       </Fields>
       <Methods>
         <Method name="getCol1" visibility="public" returnType="String"/>
@@ -65,9 +66,10 @@
         <Method name="getCol5" visibility="public" returnType="String"/>
         <Method name="getCol6" visibility="public" returnType="String"/>
         <Method name="getCol7" visibility="public" returnType="CheckBox"/>
+        <Method name="getCol8" visibility="public" returnType="String"/>
       </Methods>
     </Class>
-    <Class xPosition="599.0" yPosition="64.0" package="sams" name="TableClass" visibility="public">
+    <Class xPosition="620.0" yPosition="20.0" package="sams" name="TableClass" visibility="public">
       <Constructors>
         <Constructor name="TableClass" visibility="public"/>
       </Constructors>
@@ -132,14 +134,19 @@
           <Argument type="TableColumn" name="C7"/>
           <Argument type="TableView" name="tabId"/>
         </Method>
+        <Method name="makeTable" visibility="public" returnType="void">
+          <Argument type="String" name="query"/>
+          <Argument type="TableColumn" name="C1"/>
+          <Argument type="TableColumn" name="C2"/>
+          <Argument type="TableColumn" name="C3"/>
+          <Argument type="TableColumn" name="C4"/>
+          <Argument type="TableColumn" name="C5"/>
+          <Argument type="TableColumn" name="C6"/>
+          <Argument type="TableColumn" name="C7"/>
+          <Argument type="TableColumn" name="C8"/>
+          <Argument type="TableView" name="tabId"/>
+        </Method>
       </Methods>
-    </Class>
-    <Class xPosition="835.0" yPosition="478.0" package="" name="SAMS" visibility="public">
-      <Constructors/>
-      <Fields>
-        <Field name="untitledField" visibility="private" type="Object"/>
-      </Fields>
-      <Methods/>
     </Class>
   </ClassDiagramComponents>
   <ClassDiagramRelations>

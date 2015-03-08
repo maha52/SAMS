@@ -11,6 +11,7 @@ import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -131,13 +132,13 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private TextField lastNameField;
     @FXML
-    private ComboBox<?> facultyCombo;
+    private ComboBox<String> facultyCombo;
     @FXML
-    private ComboBox<?> departmentCombo;
+    private ComboBox<String> departmentCombo;
     @FXML
-    private ComboBox<?> programmeCombo;
+    private ComboBox<String> programmeCombo;
     @FXML
-    private ComboBox<?> levelCombo;
+    private ComboBox<String> levelCombo;
     @FXML
     private Button addUserButton;
     @FXML
@@ -160,13 +161,13 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Button blacklistedStudents;
     @FXML
-    private ComboBox<?> rFacultyCombo;
+    private ComboBox<String> rFacultyCombo;
     @FXML
-    private ComboBox<?> rdepartmentCombo;
+    private ComboBox<String> rdepartmentCombo;
     @FXML
-    private ComboBox<?> rProgrammeCombo;
+    private ComboBox<String> rProgrammeCombo;
     @FXML
-    private ComboBox<?> rCourseCombo;
+    private ComboBox<String> rCourseCombo;
     @FXML
     private TableColumn<?, ?> rMatriculeC;
     @FXML
@@ -187,8 +188,10 @@ public class FXMLDocumentController implements Initializable {
     private TableColumn<?, ?> rRemarks;
     @FXML
     private TableView<?> reportsTable;
-
-    
+    @FXML
+    private CheckBox adminCheckBox;
+    @FXML
+    private ComboBox<String> lecturerFacultyCombo;
     /*private variables*/
     private String userName;
     private String userFname;
@@ -198,6 +201,9 @@ public class FXMLDocumentController implements Initializable {
     private String courseTaught;
     private static DatabaseHelper db;
     private String date;
+    private String faculty;
+    private boolean isAdmin;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
@@ -253,16 +259,10 @@ public class FXMLDocumentController implements Initializable {
         }
     }
 
-    @FXML
-    private void registrationButtonclicked(ActionEvent event) {
-        toggleVisibility();
-        registrationPane.setVisible(true);
-        userLogout.setVisible(true);
-    }
+   //attendance handlers
 
     @FXML
     private void attendanceButtonClicked(ActionEvent event) throws Exception {
-
         toggleVisibility();
         userLogout.setVisible(true);
         String q = "select id, matricule,fname,last_name, programme,current_level"
@@ -297,59 +297,21 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
-    private void reportsButtonClicked(ActionEvent event) {
-        toggleVisibility();
-        reportsRootPane.setVisible(true);
-        Dialogs.create()
-                .title("Enter Command to view list of Reports")
-                .masthead("Choose Report to View")
-                .message("Loading..").showException(new IllegalStateException());
-        /*
-        String q = "";
-
-        userLogout.setVisible(true);
-        try {
-            char command = 'c';
-
-            switch (command) {
-
-                case 'B':
-                case 'b':  //this query prints the black listed students
-                    q = "select id, matricule, fname, lname, programme, current_level"
-                            + " from student_info where student_attends_courses values < 80/100 * avg(student_attends_courses))";
-                    break;
-
-                //prints semester wise attendance.
-                case 'S':
-                case 's':
-                    q = "select id, matricule, first name, last name " + "from student_info , order by programme "
-                            + "and group by department, level";
-                    break;
-
-                //prints daily courses by lecturer
-                case 'L':
-                case 'l':
-                    q = "select id, matricule, first_name, last_name, programme student_info ,staff_id ,staff"
-                            + "where  student_attends_courses and staff_teaches_courses";
-                    break;
-
-                //prints all courses taught on a day
-            }//end switch
-
-            if (db.connectedToDatabase) {
-
-                db.setQuery(q);
-
-                if (db.getRowCount() > 0) {
-                    //return true;
-                }
-            }
-
-            // return false;
-        } catch (SQLException ex) {
-
-        }*/
-        
+    private void reportsButtonClicked(ActionEvent event) throws SQLException {
+        if (isAdmin) {
+            Dialogs.create()
+                    .title("Please Choose The Type of Report you will want from The left pane")
+                    .masthead("Choose Report to View")
+                    .message("Loading...").showInformation();
+            toggleVisibility();
+            reportsRootPane.setVisible(true);
+            userLogout.setVisible(true);
+        } else {
+            Dialogs.create()
+                    .title("ACCESS TO REPORTS MODULE DENIED!")
+                    .masthead("Permission denied!!")
+                    .message("PLEASE LOGIN AS AN ADMINISTRATOR TO PERFORM THIS ACTION!").showError();
+        }
     }
 
     @FXML
@@ -367,25 +329,35 @@ public class FXMLDocumentController implements Initializable {
             password = passwordField.getText();
             userLogout.setText(userName + "[Logout]");
             isLoggedIn = true;
-            courseTaught = courseCombo.getEditor().getText();
+            if (lecturerCheckBox.isSelected()) {
+                courseTaught = courseCombo.getEditor().getText();
+            } else {
+                faculty = lecturerFacultyCombo.getEditor().getText();
+            }
 
         } else {
             Dialogs.create()
                     .title("Login Unsuccessful")
                     .masthead("Failed to Login!")
-                    .message("Your Login credentials could not be successfully verified\n\n").showError();
+                    .message("Your Login credentials could not be successfully verified\n\nMake Sure Your course/ Faculty is correct")
+                    .showError();
             loginFailure.setVisible(true);
         }
     }
 
     private boolean loginSuccessFull() throws SQLException {
-        String q = "SELECT staff_id,password FROM staff,staff_teaches_courses WHERE (staff_id='"
-                + userNameField.getText() + "' AND password ='"
-                + passwordField.getText() + "'";
-        if (lecturerCheckBox.isSelected()) {
+        String q = "";
+        if (lecturerCheckBox.isSelected()) {//login in as lecturer
+            q = "SELECT staff_id,password FROM staff,staff_teaches_courses WHERE (staff_id='"
+                    + userNameField.getText() + "' AND password ='"
+                    + passwordField.getText() + "'";
             q += " AND course_code ='" + courseCombo.getEditor().getText() + "')";
-        } else {
-            q += ")";
+            isAdmin = false;
+        } else {//login in as admin. This query ensures the admin belongs to the faculty he has choosen
+            q = " SELECT staff_id, password FROM staff, department WHERE (faculty_id='" + lecturerFacultyCombo.getEditor().getText()
+                    + "' AND department.dept_id in (select dept_id from staff) AND (staff_id='" + userNameField.getText() + "' AND password='"
+                    + passwordField.getText() + "'))";
+            isAdmin = true;
         }
         if (db.connectedToDatabase) {
             db.setQuery(q);
@@ -398,9 +370,20 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
-    private void beginClicked(ActionEvent event) {
+    private void beginClicked(ActionEvent event) throws SQLException {
         toggleVisibility();
         loginPane.setVisible(true);
+
+    }
+
+    @FXML
+    private void populateLecturerCombo(Event event) throws SQLException {
+        new AutoCompleteComboBoxListener(lecturerFacultyCombo);
+        String q = "SELECT DISTINCT faculty_id FROM faculties";
+        if (db.connectedToDatabase) {
+            ArrayList faculties = db.ExecuteQuery(q);
+            lecturerFacultyCombo.setItems(FXCollections.observableArrayList(faculties));//populate combo with faculties
+        }
     }
 
     @FXML
@@ -429,13 +412,30 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
+    private void adminClicked(ActionEvent event) {
+        if (adminCheckBox.isSelected()) {
+            lecturerCheckBox.setSelected(false);
+        }
+    }
+
+    @FXML
+    private void selectLecturerFaculty(ActionEvent event) {
+        if (adminCheckBox.isSelected()) {
+            this.faculty = lecturerFacultyCombo.getEditor().getText();
+        }
+    }
+
+    @FXML
     private void selectCourseClicked(MouseEvent event) {
         courseTaught = courseCombo.getEditor().getText();
     }
 
     @FXML
     private void lecturerClicked(ActionEvent event) throws SQLException {
-        populateCoursecombo();
+        if (lecturerCheckBox.isSelected()) {
+            populateCoursecombo();
+            adminCheckBox.setSelected(false);
+        }
     }
 
     @FXML
@@ -491,7 +491,6 @@ public class FXMLDocumentController implements Initializable {
         beginPane.setVisible(true);
     }
 
-
     @FXML
     private void showHelp(ActionEvent event
     ) {
@@ -507,8 +506,29 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
-    private void adduserToSystem(ActionEvent event
+    private void chooseDate(ActionEvent event
     ) {
+        //Date d = new Date(datePicker.getEditor().getText());
+        date = datePicker.getEditor().getText();
+
+    }
+
+    private String convertDate(String text) {
+        String t = "", d[] = text.split("/");//split where / is found
+        for (int i = d.length - 1; i >= 0; i--) {
+            t += d[i] + "/";//reverse the array 
+        }
+        return t;
+    }
+
+    private String getTime() {
+        Time d = new Time(System.currentTimeMillis());
+        return d.toString();
+    }
+
+    //registration handlers
+    @FXML
+    private void adduserToSystem(ActionEvent event) {
         if (isLoggedIn) {
             toggleVisibility();
             registrationPane.setVisible(true);
@@ -523,8 +543,7 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
-    private void addUserToSystem(ActionEvent event
-    ) {
+    private void addUserToSystem(ActionEvent event) {
         if (Dialogs.create()
                 .title("Warning!")
                 .masthead("Are You sure the information is correct?!")
@@ -536,18 +555,13 @@ public class FXMLDocumentController implements Initializable {
 
         }
     }
-
-    @FXML
-    private void chooseDate(ActionEvent event
-    ) {
-        //Date d = new Date(datePicker.getEditor().getText());
-        date = datePicker.getEditor().getText();
-
-    }
-
-    private String getTime() {
-        Time d = new Time(System.currentTimeMillis());
-        return d.toString();
+    //reports handlers
+ @FXML
+    private void registrationButtonclicked(ActionEvent event) {
+        toggleVisibility();
+        registrationPane.setVisible(true);
+        userLogout.setVisible(true);
+        String q = "SELECT * ";
     }
 
     @FXML
@@ -564,14 +578,6 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void selectLevel(ActionEvent event) {
-    }
-
-    private String convertDate(String text) {
-        String t = "", d[] = text.split("/");//split where / is found
-        for (int i = d.length - 1; i >= 0; i--) {
-            t += d[i] + "/";//reverse the array 
-        }
-        return t;
     }
 
     @FXML
@@ -601,4 +607,28 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void selectRCourse(ActionEvent event) {
     }
+
+    @FXML
+    private void populateRFacultyCombo(Event event) throws SQLException {
+        rFacultyCombo.setItems(lecturerFacultyCombo.getItems());
+        rFacultyCombo.getEditor().setText(faculty);
+        String q="SELECT dept_name from department WHERE faculty_id='"
+                + faculty+"'";
+        rdepartmentCombo.setItems(FXCollections.observableArrayList(db.ExecuteQuery(q)));
+    }
+
+    @FXML
+    private void populateRProgramme(Event event) throws SQLException {
+        String q = "SELECT distinct prog_name FROM programme, department WHERE (department.dept_id=programme.dept_id "
+                + "AND department.faculty_id='" + faculty + "')";//select only programmes offered in that faculty
+        rProgrammeCombo.setItems(FXCollections.observableArrayList(db.ExecuteQuery(q)));//populate  the combobox
+    }
+
+    @FXML
+    private void populateRCourse(Event event) throws SQLException {
+        String q = "SELECT course_code FROM courses WHERE faculty_id ='" + faculty + "'";//get courses in that faculty
+        rCourseCombo.setItems(FXCollections.observableArrayList(db.ExecuteQuery(q)));
+
+    }
+
 }
